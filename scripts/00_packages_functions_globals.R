@@ -6,11 +6,16 @@
 
 # Load packages
 library(ggplot2)
+library(rstudioapi)
+
+# current directory
+script_dir <- dirname(getSourceEditorContext()$path)
+repo_dir <- dirname(script_dir)
 
 # Custom functions
 
 # Project directories
 wd <- list()
-wd$raw_data <- ""  # fill in relative to current directory
-wd$processeddata <- ""  # fill in relative to current directory
-wd$output <- ""  # fill in relative to current directory
+wd$raw_data <- paste0(repo_dir, '/data/raw/')
+wd$processed_data <- paste0(repo_dir, '/data/processed/')
+wd$figs <- paste0(repo_dir, '/figures/')
