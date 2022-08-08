@@ -10,6 +10,7 @@ script_dir <- dirname(getSourceEditorContext()$path)
 
 # package imports, function definitions, and globals including directory
 source(paste0(script_dir, "/00_packages_functions_globals.R"))
+## WTF this is not working!???!
 
 # do analysis
 example_processed_data <- read.csv(

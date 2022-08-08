@@ -13,6 +13,7 @@ script_dir <- dirname(getSourceEditorContext()$path)
 repo_dir <- dirname(script_dir)
 
 # Custom functions
+CalcIntensityPathway <- function()
 
 # Project directories
 wd <- list()
