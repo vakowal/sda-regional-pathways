@@ -11,11 +11,24 @@ script_dir <- dirname(getSourceEditorContext()$path)
 # package imports, function definitions, and globals including directory
 source(paste0(script_dir, "/00_packages_functions_globals.R"))
 
-# do analysis
+# plot SDA pathways calculated from empirical data
+sda_pathways <- read.csv(
+  paste0(wd$processed_data,'SDA_pathways_RECC_residential.csv'))
+p <- ggplot(sda_pathways, aes(x=year, y=intensity_SDA))
+p <- p + geom_line()
+p <- p + facet_grid(Region~Scope, scales='free')
+pngname <- paste0(wd$figs, "SDA_pathways_RECC_residential.png")
+ggsave(pngname, width=4, height=10)
+
+# TODO calculate empirical emissions intensity pathways 
+# TODO merge empirical and SDA pathways, combine and visualize
+
+## DEMONSTRATION, THROWAWAY ##
+# demo: do analysis
 example_processed_data <- read.csv(
   paste0(wd$processed_data, 'example_processed_data.csv'))
 
-# make plots
+# demo: make plots
 example_plot <- ggplot(
   example_processed_data, aes(
     x=Model...Scenario, y=intensity_target_year_scope1_2))
