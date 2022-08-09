@@ -1,119 +1,119 @@
 Reference_key,Scenario_key,Region,Sector,Year,Activity_millions_m2
-IPCC_normative,IMAGE,North America,Combined,2020,"26,995"
-IPCC_normative,IMAGE,North America,Combined,2030,"25,356"
-IPCC_normative,IMAGE,North America,Combined,2040,"23,487"
-IPCC_normative,IMAGE,North America,Combined,2050,"20,628"
-IPCC_normative,IMAGE,Europe and Eurasia,Combined,2020,"28,540"
-IPCC_normative,IMAGE,Europe and Eurasia,Combined,2030,"28,711"
-IPCC_normative,IMAGE,Europe and Eurasia,Combined,2040,"28,410"
-IPCC_normative,IMAGE,Europe and Eurasia,Combined,2050,"27,181"
-IPCC_normative,IMAGE,Africa,Combined,2020,"15,166"
-IPCC_normative,IMAGE,Africa,Combined,2030,"20,262"
-IPCC_normative,IMAGE,Africa,Combined,2040,"27,642"
-IPCC_normative,IMAGE,Africa,Combined,2050,"37,287"
+IPCC_normative,IMAGE,North America,Combined,2020,26995
+IPCC_normative,IMAGE,North America,Combined,2030,25356
+IPCC_normative,IMAGE,North America,Combined,2040,23487
+IPCC_normative,IMAGE,North America,Combined,2050,20628
+IPCC_normative,IMAGE,Europe and Eurasia,Combined,2020,28540
+IPCC_normative,IMAGE,Europe and Eurasia,Combined,2030,28711
+IPCC_normative,IMAGE,Europe and Eurasia,Combined,2040,28410
+IPCC_normative,IMAGE,Europe and Eurasia,Combined,2050,27181
+IPCC_normative,IMAGE,Africa,Combined,2020,15166
+IPCC_normative,IMAGE,Africa,Combined,2030,20262
+IPCC_normative,IMAGE,Africa,Combined,2040,27642
+IPCC_normative,IMAGE,Africa,Combined,2050,37287
 IPCC_normative,IMAGE,Asia Pacific Developed,Combined,2020,902
-IPCC_normative,IMAGE,Asia Pacific Developed,Combined,2030,"1,004"
-IPCC_normative,IMAGE,Asia Pacific Developed,Combined,2040,"1,088"
-IPCC_normative,IMAGE,Asia Pacific Developed,Combined,2050,"1,152"
-IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2020,"9,809"
-IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2030,"11,273"
-IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2040,"13,292"
-IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2050,"15,190"
-IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2020,"9,627"
-IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2030,"12,010"
-IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2040,"14,088"
-IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2050,"16,492"
-IPCC_normative,IMAGE,Eastern Asia,Combined,2020,"18,284"
-IPCC_normative,IMAGE,Eastern Asia,Combined,2030,"20,826"
-IPCC_normative,IMAGE,Eastern Asia,Combined,2040,"23,522"
-IPCC_normative,IMAGE,Eastern Asia,Combined,2050,"26,481"
-IPCC_normative,IMAGE,Middle East,Combined,2020,"5,947"
-IPCC_normative,IMAGE,Middle East,Combined,2030,"7,002"
-IPCC_normative,IMAGE,Middle East,Combined,2040,"8,576"
-IPCC_normative,IMAGE,Middle East,Combined,2050,"10,096"
-IPCC_normative,IMAGE,Southern Asia,Combined,2020,"17,176"
-IPCC_normative,IMAGE,Southern Asia,Combined,2030,"20,804"
-IPCC_normative,IMAGE,Southern Asia,Combined,2040,"25,337"
-IPCC_normative,IMAGE,Southern Asia,Combined,2050,"29,712"
-IPCC_normative,RECC,North America,Residential,2020,"32,659"
-IPCC_normative,RECC,North America,Residential,2030,"30,943"
-IPCC_normative,RECC,North America,Residential,2040,"28,436"
-IPCC_normative,RECC,North America,Residential,2050,"24,013"
-IPCC_normative,RECC,Europe and Eurasia,Residential,2020,"26,559"
-IPCC_normative,RECC,Europe and Eurasia,Residential,2030,"26,177"
-IPCC_normative,RECC,Europe and Eurasia,Residential,2040,"24,974"
-IPCC_normative,RECC,Europe and Eurasia,Residential,2050,"23,878"
-IPCC_normative,RECC,Africa,Residential,2020,"21,516"
-IPCC_normative,RECC,Africa,Residential,2030,"30,695"
-IPCC_normative,RECC,Africa,Residential,2040,"42,254"
-IPCC_normative,RECC,Africa,Residential,2050,"54,358"
-IPCC_normative,RECC,Asia Pacific Developed,Residential,2020,"1,190"
-IPCC_normative,RECC,Asia Pacific Developed,Residential,2030,"1,217"
-IPCC_normative,RECC,Asia Pacific Developed,Residential,2040,"1,212"
-IPCC_normative,RECC,Asia Pacific Developed,Residential,2050,"1,198"
-IPCC_normative,RECC,Latin America and Caribbean,Residential,2020,"18,522"
-IPCC_normative,RECC,Latin America and Caribbean,Residential,2030,"18,916"
-IPCC_normative,RECC,Latin America and Caribbean,Residential,2040,"18,886"
-IPCC_normative,RECC,Latin America and Caribbean,Residential,2050,"18,906"
-IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2020,"9,627"
-IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2030,"13,779"
-IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2040,"17,635"
-IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2050,"20,361"
-IPCC_normative,RECC,Eastern Asia,Residential,2020,"59,033"
-IPCC_normative,RECC,Eastern Asia,Residential,2030,"56,191"
-IPCC_normative,RECC,Eastern Asia,Residential,2040,"51,153"
-IPCC_normative,RECC,Eastern Asia,Residential,2050,"45,906"
-IPCC_normative,RECC,Middle East,Residential,2020,"7,218"
-IPCC_normative,RECC,Middle East,Residential,2030,"8,847"
-IPCC_normative,RECC,Middle East,Residential,2040,"10,414"
-IPCC_normative,RECC,Middle East,Residential,2050,"11,729"
-IPCC_normative,RECC,Southern Asia,Residential,2020,"38,823"
-IPCC_normative,RECC,Southern Asia,Residential,2030,"50,711"
-IPCC_normative,RECC,Southern Asia,Residential,2040,"61,936"
-IPCC_normative,RECC,Southern Asia,Residential,2050,"70,120"
-IPCC_normative,SDS,North America,Combined,2020,"33,006"
-IPCC_normative,SDS,North America,Combined,2030,"35,964"
-IPCC_normative,SDS,North America,Combined,2040,"38,754"
-IPCC_normative,SDS,North America,Combined,2050,"40,973"
-IPCC_normative,SDS,Europe and Eurasia,Combined,2020,"26,576"
-IPCC_normative,SDS,Europe and Eurasia,Combined,2030,"30,878"
-IPCC_normative,SDS,Europe and Eurasia,Combined,2040,"35,598"
-IPCC_normative,SDS,Europe and Eurasia,Combined,2050,"39,878"
-IPCC_normative,SDS,Africa,Combined,2020,"22,763"
-IPCC_normative,SDS,Africa,Combined,2030,"30,002"
-IPCC_normative,SDS,Africa,Combined,2040,"39,788"
-IPCC_normative,SDS,Africa,Combined,2050,"50,067"
-IPCC_normative,SDS,Asia Pacific Developed,Combined,2020,"1,249"
-IPCC_normative,SDS,Asia Pacific Developed,Combined,2030,"1,598"
-IPCC_normative,SDS,Asia Pacific Developed,Combined,2040,"1,954"
-IPCC_normative,SDS,Asia Pacific Developed,Combined,2050,"2,317"
-IPCC_normative,SDS,Latin America and Caribbean,Combined,2020,"9,265"
-IPCC_normative,SDS,Latin America and Caribbean,Combined,2030,"11,629"
-IPCC_normative,SDS,Latin America and Caribbean,Combined,2040,"16,155"
-IPCC_normative,SDS,Latin America and Caribbean,Combined,2050,"20,944"
-IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2020,"12,206"
-IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2030,"15,642"
-IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2040,"19,605"
-IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2050,"23,415"
-IPCC_normative,SDS,Eastern Asia,Combined,2020,"60,021"
-IPCC_normative,SDS,Eastern Asia,Combined,2030,"67,018"
-IPCC_normative,SDS,Eastern Asia,Combined,2040,"71,236"
-IPCC_normative,SDS,Eastern Asia,Combined,2050,"72,199"
-IPCC_normative,SDS,Middle East,Combined,2020,"6,208"
-IPCC_normative,SDS,Middle East,Combined,2030,"7,856"
-IPCC_normative,SDS,Middle East,Combined,2040,"10,894"
-IPCC_normative,SDS,Middle East,Combined,2050,"15,022"
-IPCC_normative,SDS,Southern Asia,Combined,2020,"27,294"
-IPCC_normative,SDS,Southern Asia,Combined,2030,"45,249"
-IPCC_normative,SDS,Southern Asia,Combined,2040,"72,915"
-IPCC_normative,SDS,Southern Asia,Combined,2050,"96,860"
-Camarasa,-,NW Europe,Combined,2020,"1,390"
-Camarasa,-,NW Europe,Combined,2025,"1,420"
-Camarasa,-,NW Europe,Combined,2030,"1,450"
-Camarasa,-,NW Europe,Combined,2035,"1,470"
-Camarasa,-,NW Europe,Combined,2040,"1,500"
-Camarasa,-,NW Europe,Combined,2045,"1,520"
-Camarasa,-,NW Europe,Combined,2050,"1,540"
+IPCC_normative,IMAGE,Asia Pacific Developed,Combined,2030,1004
+IPCC_normative,IMAGE,Asia Pacific Developed,Combined,2040,1088
+IPCC_normative,IMAGE,Asia Pacific Developed,Combined,2050,1152
+IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2020,9809
+IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2030,11273
+IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2040,13292
+IPCC_normative,IMAGE,Latin America and Caribbean,Combined,2050,15190
+IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2020,9627
+IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2030,12010
+IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2040,14088
+IPCC_normative,IMAGE,Southeast Asia and Developing Pacific,Combined,2050,16492
+IPCC_normative,IMAGE,Eastern Asia,Combined,2020,18284
+IPCC_normative,IMAGE,Eastern Asia,Combined,2030,20826
+IPCC_normative,IMAGE,Eastern Asia,Combined,2040,23522
+IPCC_normative,IMAGE,Eastern Asia,Combined,2050,26481
+IPCC_normative,IMAGE,Middle East,Combined,2020,5947
+IPCC_normative,IMAGE,Middle East,Combined,2030,7002
+IPCC_normative,IMAGE,Middle East,Combined,2040,8576
+IPCC_normative,IMAGE,Middle East,Combined,2050,10096
+IPCC_normative,IMAGE,Southern Asia,Combined,2020,17176
+IPCC_normative,IMAGE,Southern Asia,Combined,2030,20804
+IPCC_normative,IMAGE,Southern Asia,Combined,2040,25337
+IPCC_normative,IMAGE,Southern Asia,Combined,2050,29712
+IPCC_normative,RECC,North America,Residential,2020,32659
+IPCC_normative,RECC,North America,Residential,2030,30943
+IPCC_normative,RECC,North America,Residential,2040,28436
+IPCC_normative,RECC,North America,Residential,2050,24013
+IPCC_normative,RECC,Europe and Eurasia,Residential,2020,26559
+IPCC_normative,RECC,Europe and Eurasia,Residential,2030,26177
+IPCC_normative,RECC,Europe and Eurasia,Residential,2040,24974
+IPCC_normative,RECC,Europe and Eurasia,Residential,2050,23878
+IPCC_normative,RECC,Africa,Residential,2020,21516
+IPCC_normative,RECC,Africa,Residential,2030,30695
+IPCC_normative,RECC,Africa,Residential,2040,42254
+IPCC_normative,RECC,Africa,Residential,2050,54358
+IPCC_normative,RECC,Asia Pacific Developed,Residential,2020,1190
+IPCC_normative,RECC,Asia Pacific Developed,Residential,2030,1217
+IPCC_normative,RECC,Asia Pacific Developed,Residential,2040,1212
+IPCC_normative,RECC,Asia Pacific Developed,Residential,2050,1198
+IPCC_normative,RECC,Latin America and Caribbean,Residential,2020,18522
+IPCC_normative,RECC,Latin America and Caribbean,Residential,2030,18916
+IPCC_normative,RECC,Latin America and Caribbean,Residential,2040,18886
+IPCC_normative,RECC,Latin America and Caribbean,Residential,2050,18906
+IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2020,9627
+IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2030,13779
+IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2040,17635
+IPCC_normative,RECC,Southeast Asia and Developing Pacific,Residential,2050,20361
+IPCC_normative,RECC,Eastern Asia,Residential,2020,59033
+IPCC_normative,RECC,Eastern Asia,Residential,2030,56191
+IPCC_normative,RECC,Eastern Asia,Residential,2040,51153
+IPCC_normative,RECC,Eastern Asia,Residential,2050,45906
+IPCC_normative,RECC,Middle East,Residential,2020,7218
+IPCC_normative,RECC,Middle East,Residential,2030,8847
+IPCC_normative,RECC,Middle East,Residential,2040,10414
+IPCC_normative,RECC,Middle East,Residential,2050,11729
+IPCC_normative,RECC,Southern Asia,Residential,2020,38823
+IPCC_normative,RECC,Southern Asia,Residential,2030,50711
+IPCC_normative,RECC,Southern Asia,Residential,2040,61936
+IPCC_normative,RECC,Southern Asia,Residential,2050,70120
+IPCC_normative,SDS,North America,Combined,2020,33006
+IPCC_normative,SDS,North America,Combined,2030,35964
+IPCC_normative,SDS,North America,Combined,2040,38754
+IPCC_normative,SDS,North America,Combined,2050,40973
+IPCC_normative,SDS,Europe and Eurasia,Combined,2020,26576
+IPCC_normative,SDS,Europe and Eurasia,Combined,2030,30878
+IPCC_normative,SDS,Europe and Eurasia,Combined,2040,35598
+IPCC_normative,SDS,Europe and Eurasia,Combined,2050,39878
+IPCC_normative,SDS,Africa,Combined,2020,22763
+IPCC_normative,SDS,Africa,Combined,2030,30002
+IPCC_normative,SDS,Africa,Combined,2040,39788
+IPCC_normative,SDS,Africa,Combined,2050,50067
+IPCC_normative,SDS,Asia Pacific Developed,Combined,2020,1249
+IPCC_normative,SDS,Asia Pacific Developed,Combined,2030,1598
+IPCC_normative,SDS,Asia Pacific Developed,Combined,2040,1954
+IPCC_normative,SDS,Asia Pacific Developed,Combined,2050,2317
+IPCC_normative,SDS,Latin America and Caribbean,Combined,2020,9265
+IPCC_normative,SDS,Latin America and Caribbean,Combined,2030,11629
+IPCC_normative,SDS,Latin America and Caribbean,Combined,2040,16155
+IPCC_normative,SDS,Latin America and Caribbean,Combined,2050,20944
+IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2020,12206
+IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2030,15642
+IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2040,19605
+IPCC_normative,SDS,Southeast Asia and Developing Pacific,Combined,2050,23415
+IPCC_normative,SDS,Eastern Asia,Combined,2020,60021
+IPCC_normative,SDS,Eastern Asia,Combined,2030,67018
+IPCC_normative,SDS,Eastern Asia,Combined,2040,71236
+IPCC_normative,SDS,Eastern Asia,Combined,2050,72199
+IPCC_normative,SDS,Middle East,Combined,2020,6208
+IPCC_normative,SDS,Middle East,Combined,2030,7856
+IPCC_normative,SDS,Middle East,Combined,2040,10894
+IPCC_normative,SDS,Middle East,Combined,2050,15022
+IPCC_normative,SDS,Southern Asia,Combined,2020,27294
+IPCC_normative,SDS,Southern Asia,Combined,2030,45249
+IPCC_normative,SDS,Southern Asia,Combined,2040,72915
+IPCC_normative,SDS,Southern Asia,Combined,2050,96860
+Camarasa,-,NW Europe,Combined,2020,1390
+Camarasa,-,NW Europe,Combined,2025,1420
+Camarasa,-,NW Europe,Combined,2030,1450
+Camarasa,-,NW Europe,Combined,2035,1470
+Camarasa,-,NW Europe,Combined,2040,1500
+Camarasa,-,NW Europe,Combined,2045,1520
+Camarasa,-,NW Europe,Combined,2050,1540
 Camarasa,-,SE Europe,Combined,2020,760
 Camarasa,-,SE Europe,Combined,2025,780
 Camarasa,-,SE Europe,Combined,2030,800
@@ -121,39 +121,39 @@ Camarasa,-,SE Europe,Combined,2035,820
 Camarasa,-,SE Europe,Combined,2040,840
 Camarasa,-,SE Europe,Combined,2045,850
 Camarasa,-,SE Europe,Combined,2050,860
-Camarasa,-,US,Combined,2020,"29,080"
-Camarasa,-,US,Combined,2025,"30,740"
-Camarasa,-,US,Combined,2030,"32,360"
-Camarasa,-,US,Combined,2035,"34,020"
-Camarasa,-,US,Combined,2040,"35,650"
-Camarasa,-,US,Combined,2045,"37,320"
-Camarasa,-,US,Combined,2050,"39,050"
-Camarasa,-,South America,Combined,2020,"6,500"
-Camarasa,-,South America,Combined,2025,"6,700"
-Camarasa,-,South America,Combined,2030,"6,800"
-Camarasa,-,South America,Combined,2035,"6,900"
-Camarasa,-,South America,Combined,2040,"6,900"
-Camarasa,-,South America,Combined,2045,"6,900"
-Camarasa,-,South America,Combined,2050,"6,900"
-Camarasa,-,China,Combined,2020,"65,700"
-Camarasa,-,China,Combined,2025,"71,110"
-Camarasa,-,China,Combined,2030,"76,660"
-Camarasa,-,China,Combined,2035,"79,720"
-Camarasa,-,China,Combined,2040,"82,830"
-Camarasa,-,China,Combined,2045,"85,220"
-Camarasa,-,China,Combined,2050,"86,330"
-Burger,-,Germany,Combined,2020,"5,819"
-Burger,-,Germany,Combined,2025,"5,864"
-Burger,-,Germany,Combined,2030,"5,909"
-Burger,-,Germany,Combined,2035,"5,954"
-Burger,-,Germany,Combined,2040,"6,000"
-Burger,-,Germany,Combined,2045,"6,045"
-Burger,-,Germany,Combined,2050,"6,090"
-Ostermeyer,-,Germany,Residential,2018,"2,181"
-Ostermeyer,-,Germany,Residential,2026,"2,214"
-Ostermeyer,-,Germany,Residential,2034,"2,247"
-Ostermeyer,-,Germany,Residential,2042,"2,279"
-Ostermeyer,-,Germany,Residential,2050,"2,312"
-Yu,,India,Combined,2010,"10,000"
-Yu,,India,Combined,2030,"25,000"
-Yu,,India,Combined,2050,"40,000"
+Camarasa,-,US,Combined,2020,29080
+Camarasa,-,US,Combined,2025,30740
+Camarasa,-,US,Combined,2030,32360
+Camarasa,-,US,Combined,2035,34020
+Camarasa,-,US,Combined,2040,35650
+Camarasa,-,US,Combined,2045,37320
+Camarasa,-,US,Combined,2050,39050
+Camarasa,-,South America,Combined,2020,6500
+Camarasa,-,South America,Combined,2025,6700
+Camarasa,-,South America,Combined,2030,6800
+Camarasa,-,South America,Combined,2035,6900
+Camarasa,-,South America,Combined,2040,6900
+Camarasa,-,South America,Combined,2045,6900
+Camarasa,-,South America,Combined,2050,6900
+Camarasa,-,China,Combined,2020,65700
+Camarasa,-,China,Combined,2025,71110
+Camarasa,-,China,Combined,2030,76660
+Camarasa,-,China,Combined,2035,79720
+Camarasa,-,China,Combined,2040,82830
+Camarasa,-,China,Combined,2045,85220
+Camarasa,-,China,Combined,2050,86330
+Burger,-,Germany,Combined,2020,5819
+Burger,-,Germany,Combined,2025,5864
+Burger,-,Germany,Combined,2030,5909
+Burger,-,Germany,Combined,2035,5954
+Burger,-,Germany,Combined,2040,6000
+Burger,-,Germany,Combined,2045,6045
+Burger,-,Germany,Combined,2050,6090
+Ostermeyer,-,Germany,Residential,2018,2181
+Ostermeyer,-,Germany,Residential,2026,2214
+Ostermeyer,-,Germany,Residential,2034,2247
+Ostermeyer,-,Germany,Residential,2042,2279
+Ostermeyer,-,Germany,Residential,2050,2312
+Yu,,India,Combined,2010,10000
+Yu,,India,Combined,2030,25000
+Yu,,India,Combined,2050,40000

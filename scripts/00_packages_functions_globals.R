@@ -8,7 +8,10 @@
 library(ggplot2)
 library(rstudioapi)
 
-# current directory
+# globals
+BASE_YEAR = 2020
+TARGET_YEAR = 2050
+
 script_dir <- dirname(getSourceEditorContext()$path)
 repo_dir <- dirname(script_dir)
 
@@ -24,8 +27,7 @@ repo_dir <- dirname(script_dir)
 #    year to target year
 #  - company_emissions_base (scalar): emissions (MtCO2) of company in base year
 # Returns:
-#  - company_intensity target (vector), a vector of intensity (kCO2/m2) from
-#    base year to target year
+#  - a data frame containing company_intensity target in kCO2/m2 and year
 # IMPORTANT: target year must be 2050
 CalcIntensityPathway <- function(
     company_activity, company_emissions_base, 
@@ -39,7 +41,10 @@ CalcIntensityPathway <- function(
     (sector_intensity - SI_2050) / (sector_intensity[1] - SI_2050))
   company_intensity_target <- (
     d_diff_param * p_convergence_idx * m_param + SI_2050)
-  return(company_intensity_target)
+  result_df <- data.frame(
+    year=seq(BASE_YEAR, TARGET_YEAR, by=1),
+    intensity_SDA=company_intensity_target)
+  return(result_df)
 }
 
 # Default calculation of m parameter.
