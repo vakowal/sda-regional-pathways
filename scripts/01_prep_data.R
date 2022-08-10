@@ -10,12 +10,36 @@ script_dir <- dirname(getSourceEditorContext()$path)
 # package imports, function definitions, and globals including directory
 source(paste0(script_dir, "/00_packages_functions_globals.R"))
 
-# calculate SDA
-
+# process empirical activity and emissions data
 activity_table <- read.csv(
   paste0(wd$raw_data, 'buildings_empirical_activity.csv'))
 emissions_table <- read.csv(
   paste0(wd$raw_data, 'buildings_empirical_emissions.csv'))
+
+# some pathways have base years other than 2020
+Yu_interp_activity <- activity_table[
+  (activity_table$Reference_key == 'Yu' & activity_table$Year == 2010), ]
+Yu_interp_activity[, 'Year'] <- BASE_YEAR
+Yu_interp_activity[, 'Activity_millions_m2'] <- 17500
+
+Ost_interp_activity <- activity_table[
+  (activity_table$Reference_key == 'Ostermeyer' & activity_table$Year == 2018), ]
+Ost_interp_activity[, 'Year'] <- BASE_YEAR
+Ost_interp_activity[, 'Activity_millions_m2'] <- 2189
+activity_table <- rbind(
+  activity_table, Yu_interp_activity, Ost_interp_activity)
+
+Yu_interp_emissions <- emissions_table[
+  (emissions_table$Reference_key == 'Yu' & emissions_table$Year == 2010), ]
+Yu_interp_emissions[, 'Year'] <- BASE_YEAR
+Yu_interp_emissions[, 'Emissions_MtCO2'] <- 268
+
+Ost_interp_emissions <- emissions_table[
+  (emissions_table$Reference_key == 'Ostermeyer' & emissions_table$Year == 2018), ]
+Ost_interp_emissions[, 'Year'] <- BASE_YEAR
+Ost_interp_emissions[, 'Emissions_MtCO2'] <- 89.8
+emissions_table <- rbind(
+  emissions_table, Yu_interp_emissions, Ost_interp_emissions)
 
 # some pathways have combined sector activity data, and separated emissions
 agg_emissions_df <- aggregate(
@@ -42,11 +66,7 @@ combined_sector$Sector <- 'Combined'
 sector_data_processed <- rbind(
   combined_sector, buildings_sector_data[, colnames(combined_sector)])
 
-# TODO handle problem refs:
-# Yu, Ostermeyer (base year != 2020)
-# Burger, Camarasa (scope = combined 1 & 2)
-
-# calculate SDA pathways for references with base year 2020
+# calculate SDA pathways
 comb_info_df <- unique(
   emissions_processed[
     (emissions_processed$Year == BASE_YEAR &
