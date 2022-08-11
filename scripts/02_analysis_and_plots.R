@@ -29,6 +29,19 @@ example_processed_data <- read.csv(
   paste0(wd$processed_data, 'example_processed_data.csv'))
 
 # demo: make plots
+ example_plot <- ggplot(example_processed_data, aes(
+    x = Model...Scenario, y = intensity_target_year_scope1_2))
+
+
+example_plot <- example_plot + geom_point() + facet_wrap(~Region) 
+ggsave(filename = "example_plot.png", 
+       plot = example_plot,
+       path = wd$figs,
+       width = 6,
+       height = 6,
+       units = "in",
+       dpi = 300)
+
 example_plot <- ggplot(
   example_processed_data, aes(
     x=Model...Scenario, y=intensity_target_year_scope1_2))
@@ -37,3 +50,4 @@ pngname <- paste0(wd$figs, "example_plot.png")
 png(filename=pngname, width=6, height=6, units='in', res=300)
 print(example_plot)
 dev.off()
+
