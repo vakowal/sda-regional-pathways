@@ -69,6 +69,11 @@ emissions_processed <- rbind(
   agg_emissions_df,
   emissions_table[emissions_table$Scenario_key %in% c('-', 'RECC'), ])
 
+# calculate combined scope 1 & 2 emissions for sources reporting both
+emissions_scope_1_2 <- aggregate(
+  Emissions_MtCO2~Reference_key + Scenario_key + Region + Year + Sector,
+  data=emissions_processed, FUN=sum)
+
 # calculate sector data for combined residential+services: sum
 buildings_sector_data <- read.csv(
   paste0(wd$raw_data, 'buildings_sector_data.csv'))
@@ -84,19 +89,22 @@ combined_sector$Sector <- 'Combined'
 sector_data_processed <- rbind(
   combined_sector, buildings_sector_data[, colnames(combined_sector)])
 
+# calculate combined scope 1 & 2 sector emissions
+sector_data_processed$Sector_Scope_1_2_emissions <- (
+  sector_data_processed$Sector_Scope_1_emissions + 
+    sector_data_processed$Sector_Scope_2_emissions)
+ 
 # calculate SDA pathways
 comb_info_df <- unique(
-  emissions_processed[
-    (emissions_processed$Year == BASE_YEAR &
-       emissions_processed$Scope %in% c(1, 2)),
-    c('Reference_key', 'Scenario_key', 'Region', 'Sector', 'Scope')])
+  emissions_scope_1_2[
+    (emissions_scope_1_2$Year == BASE_YEAR),
+    c('Reference_key', 'Scenario_key', 'Region', 'Sector')])
 df_list <- list()
 for(row_idx in 1:nrow(comb_info_df)) {
   ref_key <- comb_info_df[row_idx, 1]
   scen_key <- comb_info_df[row_idx, 2]
   reg_key <- comb_info_df[row_idx, 3]
   sect_key <- comb_info_df[row_idx, 4]
-  scope_key <- comb_info_df[row_idx, 5]
 
   company_activity_base <- subset(
     activity_table,
@@ -116,36 +124,27 @@ for(row_idx in 1:nrow(comb_info_df)) {
        sector_data_processed$Sector == sect_key), 'Sector_activity']
   
   company_emissions_base <- subset(
-    emissions_processed,
+    emissions_scope_1_2,
     (Reference_key == ref_key) & (Scenario_key == scen_key) &
-      (Region == reg_key) & (Sector == sect_key) & (Scope == scope_key) &
-      (Year == BASE_YEAR),
+      (Region == reg_key) & (Sector == sect_key) & (Year == BASE_YEAR),
     select=Emissions_MtCO2)[[1]] * 1000000
-  if(scope_key == 1) {
-    sector_emissions <- sector_data_processed[
-      (sector_data_processed$year >= BASE_YEAR &
-         sector_data_processed$Sector == sect_key), 'Sector_Scope_1_emissions']
-  } else if(scope_key == 2) {
-    sector_emissions <- sector_data_processed[
-      (sector_data_processed$year >= BASE_YEAR &
-         sector_data_processed$Sector == sect_key), 'Sector_Scope_2_emissions']
-  } else {
-    sector_emissions <- 'NA'  # TODO handle combined scope 1 & 2 emissions
-  }
+  
+  sector_emissions <- sector_data_processed[
+    (sector_data_processed$year >= BASE_YEAR &
+       sector_data_processed$Sector == sect_key), 'Sector_Scope_1_2_emissions']
+  
   intensity_df <- CalcIntensityPathway(
     company_activity, company_emissions_base, sector_activity, sector_emissions)
   intensity_df$Reference_key <- ref_key
   intensity_df$Scenario_key <- scen_key
   intensity_df$Region <- reg_key
   intensity_df$Sector <- sect_key
-  intensity_df$Scope <- scope_key
   df_list[[row_idx]] <- intensity_df
 }
 results_combined <- do.call(rbind, df_list)
 write.csv(
   results_combined,
-  paste0(wd$processed_data,'SDA_pathways_normative_scenarios.csv'),
+  paste0(wd$processed_data,'SDA_pathways_all_empirical_sources.csv'),
   row.names=FALSE)
 
 # TODO calculate empirical intensity
-
