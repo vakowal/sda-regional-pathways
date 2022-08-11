@@ -10,7 +10,7 @@ script_dir <- dirname(getSourceEditorContext()$path)
 # package imports, function definitions, and globals including directory
 source(paste0(script_dir, "/00_packages_functions_globals.R"))
 
-# read data, clean and process
+# read in data, clean and process - CRREM EU residential pathways
 multi_family <- read.csv(paste0(wd$raw_data, "2022-08-10_CRREM-multi-family.csv"))
 single_family <- read.csv(paste0(wd$raw_data, "2022-08-10_CRREM-single-family.csv"))
 
@@ -27,6 +27,29 @@ single_family$building_type <- "Single-family residential"
 colnames(single_family)[1] <- "year"
 
 CRREM_EU_residential <- union(multi_family, single_family)
+CRREM_EU_residential$scope <- "Combined"
+
+# read in data, clean and process - IPCC normative pathways emissions & activity
+ipcc_activity <- read.csv(paste0(wd$raw_data, "2022-08-11_IPCC normative activity.csv"))
+ipcc_emissions <- read.csv(paste0(wd$raw_data, "2022-08-11_IPCC normative emissions.csv"))
+
+colnames(ipcc_activity)[3:6] <- c("2020", "2030", "2040", "2050")
+ipcc_activity <- ipcc_activity %>% 
+  pivot_longer(cols = c("2020", "2030", "2040", "2050"),
+               names_to = "year",
+               values_to = "activity_(m^2)")
+
+ipcc_activity$id <- c(1:108)
+
+colnames(ipcc_emissions)[3:6] <- c("2020", "2030", "2040", "2050")
+ipcc_emissions <- ipcc_emissions %>% 
+  pivot_longer(cols = c("2020", "2030", "2040", "2050"),
+               names_to = "year",
+               values_to = "emissions_(kg CO2e)")
+
+ipcc_emissions$id <- c(1:108)
+
+# TO DO: merge/join IPCC tables above & calculate intensity pathways
 
 # process empirical activity and emissions data
 activity_table <- read.csv(
