@@ -5,7 +5,7 @@
 ################################
 
 # Load packages
-library(ggplot2)
+library(tidyverse)
 library(rstudioapi)
 
 # globals
