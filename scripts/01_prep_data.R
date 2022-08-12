@@ -29,27 +29,6 @@ colnames(single_family)[1] <- "year"
 CRREM_EU_residential <- union(multi_family, single_family)
 CRREM_EU_residential$scope <- "Combined"
 
-# read in data, clean and process - IPCC normative pathways emissions & activity
-ipcc_activity <- read.csv(paste0(wd$raw_data, "2022-08-11_IPCC normative activity.csv"))
-ipcc_emissions <- read.csv(paste0(wd$raw_data, "2022-08-11_IPCC normative emissions.csv"))
-
-colnames(ipcc_activity)[3:6] <- c("2020", "2030", "2040", "2050")
-ipcc_activity <- ipcc_activity %>% 
-  pivot_longer(cols = c("2020", "2030", "2040", "2050"),
-               names_to = "year",
-               values_to = "activity_(m^2)")
-
-ipcc_activity$id <- c(1:108)
-
-colnames(ipcc_emissions)[3:6] <- c("2020", "2030", "2040", "2050")
-ipcc_emissions <- ipcc_emissions %>% 
-  pivot_longer(cols = c("2020", "2030", "2040", "2050"),
-               names_to = "year",
-               values_to = "emissions_(kg CO2e)")
-
-ipcc_emissions$id <- c(1:108)
-
-# TO DO: merge/join IPCC tables above & calculate intensity pathways
 
 # process empirical activity and emissions data
 activity_table <- read.csv(
@@ -177,4 +156,19 @@ write.csv(
   paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'),
   row.names=FALSE)
 
-# TODO calculate empirical intensity
+# calculate empirical intensity
+empirical_intensity <- merge(activity_table, emissions_scope_1_2)
+empirical_intensity <- empirical_intensity %>% 
+  mutate(intensity = (Emissions_MtCO2 * 1000) / Activity_millions_m2) %>% 
+  select(!c(Activity_millions_m2, Emissions_MtCO2))
+empirical_intensity$method <- "Literature"
+
+
+# merge empirical and SDA intensity pathways
+results_combined$method <- "SDA"
+colnames(results_combined)[2] <- "intensity"
+colnames(results_combined)[1] <- "Year"
+
+intensity_paths_all <- merge(results_combined, empirical_intensity, all = TRUE)
+intensity_paths_all <- arrange(intensity_paths_all, Reference_key, Region, 
+                               Scenario_key, Year)
