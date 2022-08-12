@@ -123,6 +123,7 @@ comb_info_df <- unique(
     (emissions_scope_1_2$Year == BASE_YEAR),
     c('Reference_key', 'Scenario_key', 'Region', 'Sector')])
 df_list <- list()
+df_idx <- 1
 for(row_idx in 1:nrow(comb_info_df)) {
   ref_key <- comb_info_df[row_idx, 1]
   scen_key <- comb_info_df[row_idx, 2]
@@ -156,18 +157,24 @@ for(row_idx in 1:nrow(comb_info_df)) {
     (sector_data_processed$year >= BASE_YEAR &
        sector_data_processed$Sector == sect_key), 'Sector_Scope_1_2_emissions']
   
-  intensity_df <- CalcIntensityPathway(
-    company_activity, company_emissions_base, sector_activity, sector_emissions)
-  intensity_df$Reference_key <- ref_key
-  intensity_df$Scenario_key <- scen_key
-  intensity_df$Region <- reg_key
-  intensity_df$Sector <- sect_key
-  df_list[[row_idx]] <- intensity_df
+  # different ways of calculating m
+  for(m_flag in c(0, 1, 2)) {
+    intensity_df <- CalcIntensityPathway(
+      company_activity, company_emissions_base, sector_activity,
+      sector_emissions, m_flag)
+    intensity_df$Reference_key <- ref_key
+    intensity_df$Scenario_key <- scen_key
+    intensity_df$Region <- reg_key
+    intensity_df$Sector <- sect_key
+    intensity_df$m_flag <- m_flag
+    df_list[[df_idx]] <- intensity_df
+    df_idx <- df_idx + 1
+  }
 }
 results_combined <- do.call(rbind, df_list)
 write.csv(
   results_combined,
-  paste0(wd$processed_data,'SDA_pathways_all_empirical_sources.csv'),
+  paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'),
   row.names=FALSE)
 
 # TODO calculate empirical intensity
