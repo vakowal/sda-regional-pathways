@@ -20,8 +20,8 @@ p <- p + facet_grid(Region~Scope, scales='free')
 pngname <- paste0(wd$figs, "SDA_pathways_RECC_residential.png")
 ggsave(pngname, width=4, height=10)
 
-# TODO calculate empirical emissions intensity pathways 
-# TODO merge empirical and SDA pathways, combine and visualize
+
+# TODO visualize empirical and SDA pathways
 
 ## DEMONSTRATION, THROWAWAY ##
 # demo: do analysis
