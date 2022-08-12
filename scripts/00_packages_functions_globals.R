@@ -27,7 +27,7 @@ repo_dir <- dirname(script_dir)
 #    year to target year
 #  - company_emissions_base (scalar): emissions (MtCO2) of company in base year
 #  - m_flag: determines calculation of m parameter. 0 - default/standard calculation,
-#    1 - m set equal to 1, 2 - m floor set at 0.2. Defaults to 0.
+#    1 - m set equal to 1, 2 - m floor set at 0.8. Defaults to 0.
 # Returns:
 #  - a data frame containing company_intensity target in kCO2/m2 and year
 # IMPORTANT: target year must be 2050
@@ -89,7 +89,7 @@ CalcMParam_v1 <- function(company_activity, sector_activity){
   return(m_param)
 }
 
-# Version 2 calculation of m parameter - m floor set to 0.2.
+# Version 2 calculation of m parameter - m floor set to 0.8.
 # Args:
 #   - company activity (vector): activity (m2) of company by year
 #   - sector activity (vector): activity (m2) of sector by year
@@ -102,7 +102,7 @@ CalcMParam_v2 <- function(company_activity, sector_activity){
     company_activity[length(company_activity)] /
       sector_activity[length(sector_activity)])
   m_param <- (company_activity / sector_activity) / target_year_ratio
-  m_param[m_param < 0.2] <- 0.2
+  m_param[m_param < 0.8] <- 0.8
   return(m_param)
 }
 

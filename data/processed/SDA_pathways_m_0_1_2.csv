@@ -61,12 +61,12 @@
 2048,0.254066359393351,"IPCC_normative","IMAGE","Africa","Combined",1
 2049,0.176526759256491,"IPCC_normative","IMAGE","Africa","Combined",1
 2050,0.101179508976237,"IPCC_normative","IMAGE","Africa","Combined",1
-2020,11.5054407057975,"IPCC_normative","IMAGE","Africa","Combined",2
-2021,10.9897611413437,"IPCC_normative","IMAGE","Africa","Combined",2
-2022,10.4084130161936,"IPCC_normative","IMAGE","Africa","Combined",2
-2023,9.80401035578579,"IPCC_normative","IMAGE","Africa","Combined",2
-2024,9.17984747273458,"IPCC_normative","IMAGE","Africa","Combined",2
-2025,8.53882089277721,"IPCC_normative","IMAGE","Africa","Combined",2
+2020,12.9438808971797,"IPCC_normative","IMAGE","Africa","Combined",2
+2021,12.1481158220119,"IPCC_normative","IMAGE","Africa","Combined",2
+2022,11.2173572684228,"IPCC_normative","IMAGE","Africa","Combined",2
+2023,10.317788731948,"IPCC_normative","IMAGE","Africa","Combined",2
+2024,9.44765088273948,"IPCC_normative","IMAGE","Africa","Combined",2
+2025,8.60530442418375,"IPCC_normative","IMAGE","Africa","Combined",2
 2026,7.88349896380581,"IPCC_normative","IMAGE","Africa","Combined",2
 2027,7.21614042139297,"IPCC_normative","IMAGE","Africa","Combined",2
 2028,6.53875205902361,"IPCC_normative","IMAGE","Africa","Combined",2
@@ -154,7 +154,7 @@
 2048,0.249578712658234,"IPCC_normative","SDS","Africa","Combined",1
 2049,0.174315111617746,"IPCC_normative","SDS","Africa","Combined",1
 2050,0.101179508976237,"IPCC_normative","SDS","Africa","Combined",1
-2020,12.4746894685267,"IPCC_normative","SDS","Africa","Combined",2
+2020,12.5669125261418,"IPCC_normative","SDS","Africa","Combined",2
 2021,11.8178790550053,"IPCC_normative","SDS","Africa","Combined",2
 2022,11.1083718620404,"IPCC_normative","SDS","Africa","Combined",2
 2023,10.3906076473293,"IPCC_normative","SDS","Africa","Combined",2
@@ -991,9 +991,9 @@
 2048,0.246063911251742,"Yu","-","India","Combined",1
 2049,0.172582911493682,"Yu","-","India","Combined",1
 2050,0.101179508976237,"Yu","-","India","Combined",1
-2020,11.7259156359659,"Yu","-","India","Combined",2
-2021,11.1392727662908,"Yu","-","India","Combined",2
-2022,10.4973215766437,"Yu","-","India","Combined",2
+2020,12.2716644732238,"Yu","-","India","Combined",2
+2021,11.5175515658492,"Yu","-","India","Combined",2
+2022,10.6355110480959,"Yu","-","India","Combined",2
 2023,9.84237410320789,"Yu","-","India","Combined",2
 2024,9.17678101556915,"Yu","-","India","Combined",2
 2025,8.50259223204385,"Yu","-","India","Combined",2
@@ -1177,9 +1177,9 @@
 2048,0.408591197517143,"IPCC_normative","SDS","Latin America and Caribbean","Combined",1
 2049,0.252681259273099,"IPCC_normative","SDS","Latin America and Caribbean","Combined",1
 2050,0.101179508976237,"IPCC_normative","SDS","Latin America and Caribbean","Combined",1
-2020,25.0407852467509,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
-2021,23.7631596390052,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
-2022,22.3705078117609,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
+2020,25.9241754592696,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
+2021,24.324119700571,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
+2022,22.4526307019939,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
 2023,20.9532540561756,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
 2024,19.5161269078774,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
 2025,18.0632423772687,"IPCC_normative","SDS","Latin America and Caribbean","Combined",2
@@ -1363,11 +1363,11 @@
 2048,1.25385474855011,"IPCC_normative","SDS","Middle East","Combined",1
 2049,0.669252626651652,"IPCC_normative","SDS","Middle East","Combined",1
 2050,0.101179508976237,"IPCC_normative","SDS","Middle East","Combined",1
-2020,87.4615219162314,"IPCC_normative","SDS","Middle East","Combined",2
-2021,83.4083455535888,"IPCC_normative","SDS","Middle East","Combined",2
-2022,78.8717474750733,"IPCC_normative","SDS","Middle East","Combined",2
-2023,74.1762655402141,"IPCC_normative","SDS","Middle East","Combined",2
-2024,69.3454357714683,"IPCC_normative","SDS","Middle East","Combined",2
+2020,96.9274523966406,"IPCC_normative","SDS","Middle East","Combined",2
+2021,90.9278605667285,"IPCC_normative","SDS","Middle East","Combined",2
+2022,83.9104988000576,"IPCC_normative","SDS","Middle East","Combined",2
+2023,77.1282910728055,"IPCC_normative","SDS","Middle East","Combined",2
+2024,70.5679730921402,"IPCC_normative","SDS","Middle East","Combined",2
 2025,64.3999236991538,"IPCC_normative","SDS","Middle East","Combined",2
 2026,59.3580363924717,"IPCC_normative","SDS","Middle East","Combined",2
 2027,54.2358476478676,"IPCC_normative","SDS","Middle East","Combined",2
@@ -2200,20 +2200,20 @@
 2048,0.324576990104034,"IPCC_normative","SDS","Southern Asia","Combined",1
 2049,0.211276524361089,"IPCC_normative","SDS","Southern Asia","Combined",1
 2050,0.101179508976237,"IPCC_normative","SDS","Southern Asia","Combined",1
-2020,11.6459261717978,"IPCC_normative","SDS","Southern Asia","Combined",2
-2021,11.5058779567496,"IPCC_normative","SDS","Southern Asia","Combined",2
-2022,11.226518776675,"IPCC_normative","SDS","Southern Asia","Combined",2
-2023,10.8580383154677,"IPCC_normative","SDS","Southern Asia","Combined",2
-2024,10.4100800413044,"IPCC_normative","SDS","Southern Asia","Combined",2
-2025,9.8912288723059,"IPCC_normative","SDS","Southern Asia","Combined",2
-2026,9.30916032665378,"IPCC_normative","SDS","Southern Asia","Combined",2
-2027,8.67072253164559,"IPCC_normative","SDS","Southern Asia","Combined",2
-2028,7.98205577819082,"IPCC_normative","SDS","Southern Asia","Combined",2
-2029,7.24865604012219,"IPCC_normative","SDS","Southern Asia","Combined",2
-2030,6.47545535746236,"IPCC_normative","SDS","Southern Asia","Combined",2
-2031,6.00033851857959,"IPCC_normative","SDS","Southern Asia","Combined",2
-2032,5.50988245976927,"IPCC_normative","SDS","Southern Asia","Combined",2
-2033,5.00614915384494,"IPCC_normative","SDS","Southern Asia","Combined",2
+2020,18.8668688614201,"IPCC_normative","SDS","Southern Asia","Combined",2
+2021,17.7041010179009,"IPCC_normative","SDS","Southern Asia","Combined",2
+2022,16.3440813965752,"IPCC_normative","SDS","Southern Asia","Combined",2
+2023,15.0296364681721,"IPCC_normative","SDS","Southern Asia","Combined",2
+2024,13.7581955089477,"IPCC_normative","SDS","Southern Asia","Combined",2
+2025,12.527363187104,"IPCC_normative","SDS","Southern Asia","Combined",2
+2026,11.3349348828614,"IPCC_normative","SDS","Southern Asia","Combined",2
+2027,10.1788469303924,"IPCC_normative","SDS","Southern Asia","Combined",2
+2028,9.05719442905839,"IPCC_normative","SDS","Southern Asia","Combined",2
+2029,7.96819583414419,"IPCC_normative","SDS","Southern Asia","Combined",2
+2030,6.91019221473927,"IPCC_normative","SDS","Southern Asia","Combined",2
+2031,6.25815737831601,"IPCC_normative","SDS","Southern Asia","Combined",2
+2032,5.62491523484346,"IPCC_normative","SDS","Southern Asia","Combined",2
+2033,5.00930488026503,"IPCC_normative","SDS","Southern Asia","Combined",2
 2034,4.49094604328558,"IPCC_normative","SDS","Southern Asia","Combined",2
 2035,3.96583592416354,"IPCC_normative","SDS","Southern Asia","Combined",2
 2036,3.43226472119509,"IPCC_normative","SDS","Southern Asia","Combined",2
@@ -2386,12 +2386,12 @@
 2048,0.238007645345519,"IPCC_normative","RECC","Africa","Residential",1
 2049,0.200451899844124,"IPCC_normative","RECC","Africa","Residential",1
 2050,0.16399633953584,"IPCC_normative","RECC","Africa","Residential",1
-2020,4.59859647918193,"IPCC_normative","RECC","Africa","Residential",2
-2021,4.41555231919757,"IPCC_normative","RECC","Africa","Residential",2
-2022,4.22014124653868,"IPCC_normative","RECC","Africa","Residential",2
-2023,4.01356490618457,"IPCC_normative","RECC","Africa","Residential",2
-2024,3.79719113632011,"IPCC_normative","RECC","Africa","Residential",2
-2025,3.57223386983664,"IPCC_normative","RECC","Africa","Residential",2
+2020,5.16386452167181,"IPCC_normative","RECC","Africa","Residential",2
+2021,4.86303400101447,"IPCC_normative","RECC","Africa","Residential",2
+2022,4.52954741007465,"IPCC_normative","RECC","Africa","Residential",2
+2023,4.20553538274005,"IPCC_normative","RECC","Africa","Residential",2
+2024,3.89052248515705,"IPCC_normative","RECC","Africa","Residential",2
+2025,3.58406204355349,"IPCC_normative","RECC","Africa","Residential",2
 2026,3.34700877868407,"IPCC_normative","RECC","Africa","Residential",2
 2027,3.11338059072495,"IPCC_normative","RECC","Africa","Residential",2
 2028,2.8722819877616,"IPCC_normative","RECC","Africa","Residential",2
