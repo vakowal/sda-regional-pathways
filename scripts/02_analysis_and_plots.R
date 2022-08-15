@@ -34,6 +34,19 @@ for(region in unique(sda_pathways$Region)) {
 
 # TODO visualize empirical and SDA pathways
 
+# subset intensity pathways df to include only default m param pathways from SDA 
+# and pathways from literature
+intensity_paths_subs <- intensity_paths_all[(intensity_paths_all$m_flag == 0) | 
+                                              (is.na(intensity_paths_all$m_flag)), ]
+
+
+lit_sda_africa <- intensity_paths_subs %>% 
+  filter(Reference_key == "IPCC_normative" & Region == "Africa") %>% 
+  ggplot(aes(x = Year, y = intensity, color = method)) +
+  geom_line(aes(group = method)) +
+  facet_grid(Region ~ Scenario_key)
+
+
 ## DEMONSTRATION, THROWAWAY ##
 # demo: do analysis
 example_processed_data <- read.csv(
