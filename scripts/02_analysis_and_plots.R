@@ -40,11 +40,26 @@ intensity_paths_subs <- intensity_paths_all[(intensity_paths_all$m_flag == 0) |
                                               (is.na(intensity_paths_all$m_flag)), ]
 
 
-lit_sda_africa <- intensity_paths_subs %>% 
-  filter(Reference_key == "IPCC_normative" & Region == "Africa") %>% 
-  ggplot(aes(x = Year, y = intensity, color = method)) +
-  geom_line(aes(group = method)) +
-  facet_grid(Region ~ Scenario_key)
+# plot pathways for IPCC normative models, literature data vs SDA data
+ipcc_paths <- filter(intensity_paths_subs, Reference_key ==  "IPCC_normative")
+
+for (region in unique(ipcc_paths$Region)) {
+  int_subs <- ipcc_paths[ipcc_paths$Region == region, ]
+  p<- ggplot(int_subs, aes(x = Year, y = intensity, group = method)) +
+      geom_line(aes(colour = method)) +
+      facet_grid(Region ~ Scenario_key) +
+      labs(fill = "Method") +
+      ggtitle(region) +
+      xlab("") +
+      theme(axis.text.x = element_text(angle = 45)) +
+      ylab("Intensity (kg CO2 / m2)")
+  filename <- paste0(wd$figs, paste0("SDA_vs_Lit_", region, ".png"))
+  png(filename, width = 6, height = 3, units = 'in', res = 300)
+  print(p)
+  dev.off()
+  print(region)
+}
+
 
 
 ## DEMONSTRATION, THROWAWAY ##
