@@ -24,7 +24,9 @@ for(region in unique(sda_pathways$Region)) {
   p <- p + geom_line(aes(colour=m_parameter_option))
   p <- p + facet_grid(Reference_key~Scenario_key)
   p <- p + labs(fill="m parameter option")
-  p <- p + ylab("SDA Intensity (kg CO2 / m2)") + ggtitle(region)
+  p <- p + ylab("SDA Intensity (kg CO2 / m2)") + 
+            ggtitle(region, subtitle = "M parameter testing") + 
+            theme(axis.text.x = element_text(angle = 45))
   filename <- paste0(wd$figs, paste0("m_param_", region, ".png"))
   png(filename, width=6, height=3, units='in', res=300)
   print(p)
@@ -49,7 +51,7 @@ for (region in unique(ipcc_paths$Region)) {
       geom_line(aes(colour = method)) +
       facet_grid(Region ~ Scenario_key) +
       labs(fill = "Method") +
-      ggtitle(region) +
+      ggtitle(region, subtitle = "SDA vs. pathways from literature") +
       xlab("") +
       theme(axis.text.x = element_text(angle = 45)) +
       ylab("Intensity (kg CO2 / m2)")
