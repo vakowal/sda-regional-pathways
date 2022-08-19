@@ -63,3 +63,26 @@ for (region in unique(intensity_paths_subs$Region)) {
   dev.off()
   print(region)
 }
+
+# plot CRREM EU country-level pathways vs Ostermeyer country-level bottom-up pathways
+# subset df to include only countries included in both sources: 
+# France, Germany, Poland
+CRREM_ost <- read.csv(paste0(wd$processed_data, "CRREM_ostermeyer.csv"))
+CRREM_ost_subs <- subset(CRREM_ost, country %in% c("France", "Germany", 
+                                                   "Poland"))
+
+for (country in unique(CRREM_ost_subs$country)) {
+  EU_pathway <- CRREM_ost_subs[CRREM_ost_subs$country == country, ]
+  p <- ggplot(EU_pathway, aes(x = year, y = intensity, group = Scenario_key)) +
+       geom_line(aes(colour = Scenario_key)) +
+       labs(fill = "Scenario_key") +
+       ggtitle(country, subtitle = "CRREM vs bottom-up country pathways") +
+       xlab("") +
+       theme(axis.text.x = element_text(angle = 45)) +
+       ylab("Intensity (kg CO2 / m2)")
+  filename <- paste0(wd$figs, paste0("CRREM_vs_Ostermeyer_", country, ".png"))
+  png(filename, width = 6, height = 3, units = 'in', res = 300)
+  print(p)
+  dev.off()
+  print(country)
+}

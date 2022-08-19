@@ -10,24 +10,39 @@ script_dir <- dirname(getSourceEditorContext()$path)
 # package imports, function definitions, and globals including directory
 source(paste0(script_dir, "/00_packages_functions_globals.R"))
 
-# read in data, clean and process - CRREM EU residential pathways
-multi_family <- read.csv(paste0(wd$raw_data, "2022-08-10_CRREM-multi-family.csv"))
-single_family <- read.csv(paste0(wd$raw_data, "2022-08-10_CRREM-single-family.csv"))
+# process CRREM EU residential data & Ostermeyer data for comparison, 
+# if they don't already exist 
 
-multi_family <- multi_family %>% 
-  pivot_longer(!ï..YEAR, names_to = "country", values_to = "emissions_intensity")  
+if (!file.exists(paste0(wd$processed_data, 'CRREM_ostermeyer.csv'))) {
+  multi_family <- read.csv(paste0(wd$raw_data, "2022-08-19_CRREM-multi-family.csv"))
+  single_family <- read.csv(paste0(wd$raw_data, "2022-08-19_CRREM-single-family.csv"))
   
-multi_family$building_type <- "Multi-family residential"
-colnames(multi_family)[1] <- "year"
-
-single_family <- single_family %>% 
-  pivot_longer(!ï..YEAR, names_to = "country", values_to = "emissions_intensity")
-
-single_family$building_type <- "Single-family residential"
-colnames(single_family)[1] <- "year"
-
-CRREM_EU_residential <- union(multi_family, single_family)
-CRREM_EU_residential$scope <- "Combined"
+  multi_family <- multi_family %>% 
+  pivot_longer(!YEAR, names_to = "country", values_to = "intensity")  
+  colnames(multi_family)[1] <- "year"
+  multi_family$Reference_key <- "CRREM"
+  multi_family$Scenario_key <- "CRREM EU Multi-family"
+  multi_family$country <- str_replace_all(multi_family$country, "\\.", " ")
+  
+  single_family <- single_family %>% 
+  pivot_longer(!YEAR, names_to = "country", values_to = "intensity")
+  colnames(single_family)[1] <- "year"
+  single_family$Reference_key <- "CRREM"
+  single_family$Scenario_key <- "CRREM EU Single-family"
+  single_family$country <- str_replace_all(single_family$country, "\\.", " ")
+  
+  CRREM_EU_residential <- union(multi_family, single_family)
+  CRREM_EU_residential$scope <- "Combined"
+  
+  ostermeyer <- read.csv(paste0(wd$raw_data, "2022-08-19_ostermeyer-EU-pathways.csv"))
+  ostermeyer$scope <- "Combined"
+  CRREM_ostermeyer <- union(CRREM_EU_residential, ostermeyer)
+  
+  write.csv(CRREM_ostermeyer, paste0(wd$processed_data, 'CRREM_ostermeyer.csv'),
+          row.names = FALSE)
+} else {
+  print("CRREM vs Ostermeyer already exists - no changes made")
+}
 
 # process empirical activity data, if they don't already exist
 if (!file.exists(paste0(wd$processed_data, 'processed_empirical_activity.csv'))) {

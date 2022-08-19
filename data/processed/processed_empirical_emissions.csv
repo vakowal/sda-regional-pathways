@@ -1,0 +1,161 @@
+"Reference_key","Scenario_key","Region","Year","Sector","Emissions_MtCO2"
+"Yu","-","India",2010,"Combined",142
+"IPCC_normative","IMAGE","Africa",2020,"Combined",245
+"IPCC_normative","SDS","Africa",2020,"Combined",357
+"IPCC_normative","IMAGE","Asia Pacific Developed",2020,"Combined",630
+"IPCC_normative","SDS","Asia Pacific Developed",2020,"Combined",649
+"Camarasa","-","China",2020,"Combined",2599.2
+"IPCC_normative","IMAGE","Eastern Asia",2020,"Combined",1703
+"IPCC_normative","SDS","Eastern Asia",2020,"Combined",2091
+"IPCC_normative","IMAGE","Europe and Eurasia",2020,"Combined",2032
+"IPCC_normative","SDS","Europe and Eurasia",2020,"Combined",1998
+"Burger","-","Germany",2020,"Combined",185
+"Yu","-","India",2020,"Combined",268
+"IPCC_normative","IMAGE","Latin America and Caribbean",2020,"Combined",256
+"IPCC_normative","SDS","Latin America and Caribbean",2020,"Combined",300
+"IPCC_normative","IMAGE","Middle East",2020,"Combined",496
+"IPCC_normative","SDS","Middle East",2020,"Combined",752
+"IPCC_normative","IMAGE","North America",2020,"Combined",1701
+"IPCC_normative","SDS","North America",2020,"Combined",1819
+"Camarasa","-","NW Europe",2020,"Combined",49.48
+"Camarasa","-","SE Europe",2020,"Combined",18.91
+"Camarasa","-","South America",2020,"Combined",30.58
+"IPCC_normative","IMAGE","Southeast Asia and Developing Pacific",2020,"Combined",413
+"IPCC_normative","SDS","Southeast Asia and Developing Pacific",2020,"Combined",595
+"IPCC_normative","IMAGE","Southern Asia",2020,"Combined",397
+"IPCC_normative","SDS","Southern Asia",2020,"Combined",643
+"Camarasa","-","US",2020,"Combined",1568
+"Camarasa","-","China",2025,"Combined",2754
+"Burger","-","Germany",2025,"Combined",164
+"Camarasa","-","NW Europe",2025,"Combined",41.51
+"Camarasa","-","SE Europe",2025,"Combined",15.21
+"Camarasa","-","South America",2025,"Combined",28.63
+"Camarasa","-","US",2025,"Combined",1189
+"IPCC_normative","IMAGE","Africa",2030,"Combined",252
+"IPCC_normative","SDS","Africa",2030,"Combined",319
+"IPCC_normative","IMAGE","Asia Pacific Developed",2030,"Combined",515
+"IPCC_normative","SDS","Asia Pacific Developed",2030,"Combined",333
+"Camarasa","-","China",2030,"Combined",2880.1
+"IPCC_normative","IMAGE","Eastern Asia",2030,"Combined",2223
+"IPCC_normative","SDS","Eastern Asia",2030,"Combined",1585
+"IPCC_normative","IMAGE","Europe and Eurasia",2030,"Combined",1851
+"IPCC_normative","SDS","Europe and Eurasia",2030,"Combined",1246
+"Burger","-","Germany",2030,"Combined",143
+"Yu","-","India",2030,"Combined",394
+"IPCC_normative","IMAGE","Latin America and Caribbean",2030,"Combined",231
+"IPCC_normative","SDS","Latin America and Caribbean",2030,"Combined",203
+"IPCC_normative","IMAGE","Middle East",2030,"Combined",456
+"IPCC_normative","SDS","Middle East",2030,"Combined",623
+"IPCC_normative","IMAGE","North America",2030,"Combined",1318
+"IPCC_normative","SDS","North America",2030,"Combined",904
+"Camarasa","-","NW Europe",2030,"Combined",34.21
+"Camarasa","-","SE Europe",2030,"Combined",11.69
+"Camarasa","-","South America",2030,"Combined",27.77
+"IPCC_normative","IMAGE","Southeast Asia and Developing Pacific",2030,"Combined",444
+"IPCC_normative","SDS","Southeast Asia and Developing Pacific",2030,"Combined",525
+"IPCC_normative","IMAGE","Southern Asia",2030,"Combined",463
+"IPCC_normative","SDS","Southern Asia",2030,"Combined",615
+"Camarasa","-","US",2030,"Combined",1013
+"Camarasa","-","China",2035,"Combined",2611.1
+"Burger","-","Germany",2035,"Combined",116
+"Camarasa","-","NW Europe",2035,"Combined",26.61
+"Camarasa","-","SE Europe",2035,"Combined",8.8
+"Camarasa","-","South America",2035,"Combined",27.63
+"Camarasa","-","US",2035,"Combined",945
+"IPCC_normative","IMAGE","Africa",2040,"Combined",217
+"IPCC_normative","SDS","Africa",2040,"Combined",276
+"IPCC_normative","IMAGE","Asia Pacific Developed",2040,"Combined",283
+"IPCC_normative","SDS","Asia Pacific Developed",2040,"Combined",147
+"Camarasa","-","China",2040,"Combined",2287.6
+"IPCC_normative","IMAGE","Eastern Asia",2040,"Combined",1193
+"IPCC_normative","SDS","Eastern Asia",2040,"Combined",628
+"IPCC_normative","IMAGE","Europe and Eurasia",2040,"Combined",1519
+"IPCC_normative","SDS","Europe and Eurasia",2040,"Combined",710
+"Burger","-","Germany",2040,"Combined",90
+"IPCC_normative","IMAGE","Latin America and Caribbean",2040,"Combined",184
+"IPCC_normative","SDS","Latin America and Caribbean",2040,"Combined",131
+"IPCC_normative","IMAGE","Middle East",2040,"Combined",449
+"IPCC_normative","SDS","Middle East",2040,"Combined",426
+"IPCC_normative","IMAGE","North America",2040,"Combined",947
+"IPCC_normative","SDS","North America",2040,"Combined",361
+"Camarasa","-","NW Europe",2040,"Combined",19.75
+"Camarasa","-","SE Europe",2040,"Combined",6.15
+"Camarasa","-","South America",2040,"Combined",27.85
+"IPCC_normative","IMAGE","Southeast Asia and Developing Pacific",2040,"Combined",295
+"IPCC_normative","SDS","Southeast Asia and Developing Pacific",2040,"Combined",301
+"IPCC_normative","IMAGE","Southern Asia",2040,"Combined",543
+"IPCC_normative","SDS","Southern Asia",2040,"Combined",311
+"Camarasa","-","US",2040,"Combined",890
+"Camarasa","-","China",2045,"Combined",1726.6
+"Burger","-","Germany",2045,"Combined",62
+"Camarasa","-","NW Europe",2045,"Combined",14.36
+"Camarasa","-","SE Europe",2045,"Combined",4.23
+"Camarasa","-","South America",2045,"Combined",28.64
+"Camarasa","-","US",2045,"Combined",824
+"IPCC_normative","IMAGE","Africa",2050,"Combined",151
+"IPCC_normative","SDS","Africa",2050,"Combined",349
+"IPCC_normative","IMAGE","Asia Pacific Developed",2050,"Combined",163
+"IPCC_normative","SDS","Asia Pacific Developed",2050,"Combined",62
+"Camarasa","-","China",2050,"Combined",1019.2
+"IPCC_normative","IMAGE","Eastern Asia",2050,"Combined",780
+"IPCC_normative","SDS","Eastern Asia",2050,"Combined",217
+"IPCC_normative","IMAGE","Europe and Eurasia",2050,"Combined",1108
+"IPCC_normative","SDS","Europe and Eurasia",2050,"Combined",373
+"Burger","-","Germany",2050,"Combined",34
+"Yu","-","India",2050,"Combined",614
+"IPCC_normative","IMAGE","Latin America and Caribbean",2050,"Combined",157
+"IPCC_normative","SDS","Latin America and Caribbean",2050,"Combined",77
+"IPCC_normative","IMAGE","Middle East",2050,"Combined",435
+"IPCC_normative","SDS","Middle East",2050,"Combined",274
+"IPCC_normative","IMAGE","North America",2050,"Combined",478
+"IPCC_normative","SDS","North America",2050,"Combined",51
+"Camarasa","-","NW Europe",2050,"Combined",9.87
+"Camarasa","-","SE Europe",2050,"Combined",2.65
+"Camarasa","-","South America",2050,"Combined",29.28
+"IPCC_normative","IMAGE","Southeast Asia and Developing Pacific",2050,"Combined",111
+"IPCC_normative","SDS","Southeast Asia and Developing Pacific",2050,"Combined",238
+"IPCC_normative","IMAGE","Southern Asia",2050,"Combined",363
+"IPCC_normative","SDS","Southern Asia",2050,"Combined",126
+"Camarasa","-","US",2050,"Combined",760
+"Ostermeyer","-","Germany",2018,"Residential",94
+"IPCC_normative","RECC","Africa",2020,"Residential",138
+"IPCC_normative","RECC","Asia Pacific Developed",2020,"Residential",168
+"IPCC_normative","RECC","Eastern Asia",2020,"Residential",1183
+"IPCC_normative","RECC","Europe and Eurasia",2020,"Residential",1606
+"Ostermeyer","-","Germany",2020,"Residential",89.8
+"IPCC_normative","RECC","Latin America and Caribbean",2020,"Residential",218
+"IPCC_normative","RECC","Middle East",2020,"Residential",200
+"IPCC_normative","RECC","North America",2020,"Residential",979
+"IPCC_normative","RECC","Southeast Asia and Developing Pacific",2020,"Residential",295
+"IPCC_normative","RECC","Southern Asia",2020,"Residential",195
+"Ostermeyer","-","Germany",2026,"Residential",77
+"IPCC_normative","RECC","Africa",2030,"Residential",81
+"IPCC_normative","RECC","Asia Pacific Developed",2030,"Residential",69
+"IPCC_normative","RECC","Eastern Asia",2030,"Residential",462
+"IPCC_normative","RECC","Europe and Eurasia",2030,"Residential",870
+"IPCC_normative","RECC","Latin America and Caribbean",2030,"Residential",82
+"IPCC_normative","RECC","Middle East",2030,"Residential",116
+"IPCC_normative","RECC","North America",2030,"Residential",361
+"IPCC_normative","RECC","Southeast Asia and Developing Pacific",2030,"Residential",149
+"IPCC_normative","RECC","Southern Asia",2030,"Residential",163
+"Ostermeyer","-","Germany",2034,"Residential",52
+"IPCC_normative","RECC","Africa",2040,"Residential",40
+"IPCC_normative","RECC","Asia Pacific Developed",2040,"Residential",31
+"IPCC_normative","RECC","Eastern Asia",2040,"Residential",172
+"IPCC_normative","RECC","Europe and Eurasia",2040,"Residential",378
+"IPCC_normative","RECC","Latin America and Caribbean",2040,"Residential",47
+"IPCC_normative","RECC","Middle East",2040,"Residential",62
+"IPCC_normative","RECC","North America",2040,"Residential",160
+"IPCC_normative","RECC","Southeast Asia and Developing Pacific",2040,"Residential",59
+"IPCC_normative","RECC","Southern Asia",2040,"Residential",53
+"Ostermeyer","-","Germany",2042,"Residential",31
+"IPCC_normative","RECC","Africa",2050,"Residential",21
+"IPCC_normative","RECC","Asia Pacific Developed",2050,"Residential",18
+"IPCC_normative","RECC","Eastern Asia",2050,"Residential",83
+"IPCC_normative","RECC","Europe and Eurasia",2050,"Residential",222
+"Ostermeyer","-","Germany",2050,"Residential",15
+"IPCC_normative","RECC","Latin America and Caribbean",2050,"Residential",26
+"IPCC_normative","RECC","Middle East",2050,"Residential",31
+"IPCC_normative","RECC","North America",2050,"Residential",72
+"IPCC_normative","RECC","Southeast Asia and Developing Pacific",2050,"Residential",28
+"IPCC_normative","RECC","Southern Asia",2050,"Residential",16
