@@ -1,11 +1,11 @@
 Reference_key,Scenario_key,Region,Sector,Year,Scope,Emissions_MtCO2
-Camarasa,-,China,Combined,2020,1_2,149
-Camarasa,-,China,Combined,2025,1_2,189
-Camarasa,-,China,Combined,2030,1_2,233
-Camarasa,-,China,Combined,2035,1_2,261
-Camarasa,-,China,Combined,2040,1_2,287
-Camarasa,-,China,Combined,2045,1_2,303
-Camarasa,-,China,Combined,2050,1_2,291
+Camarasa,-,China,Combined,2020,1_2,2599.2
+Camarasa,-,China,Combined,2025,1_2,2754.0
+Camarasa,-,China,Combined,2030,1_2,2880.1
+Camarasa,-,China,Combined,2035,1_2,2611.1
+Camarasa,-,China,Combined,2040,1_2,2287.6
+Camarasa,-,China,Combined,2045,1_2,1726.6
+Camarasa,-,China,Combined,2050,1_2,1019.2
 Burger,-,Germany,Combined,2020,1_2,185
 Burger,-,Germany,Combined,2025,1_2,164
 Burger,-,Germany,Combined,2030,1_2,143
@@ -16,34 +16,34 @@ Burger,-,Germany,Combined,2050,1_2,34
 Yu,-,India,Combined,2010,1_2,142
 Yu,-,India,Combined,2030,1_2,394
 Yu,-,India,Combined,2050,1_2,614
-Camarasa,-,NW Europe,Combined,2020,1_2,50
-Camarasa,-,NW Europe,Combined,2025,1_2,41
-Camarasa,-,NW Europe,Combined,2030,1_2,34
-Camarasa,-,NW Europe,Combined,2035,1_2,27
-Camarasa,-,NW Europe,Combined,2040,1_2,20
-Camarasa,-,NW Europe,Combined,2045,1_2,14
-Camarasa,-,NW Europe,Combined,2050,1_2,10
-Camarasa,-,SE Europe,Combined,2020,1_2,19
-Camarasa,-,SE Europe,Combined,2025,1_2,15
-Camarasa,-,SE Europe,Combined,2030,1_2,12
-Camarasa,-,SE Europe,Combined,2035,1_2,9
-Camarasa,-,SE Europe,Combined,2040,1_2,6
-Camarasa,-,SE Europe,Combined,2045,1_2,4
-Camarasa,-,SE Europe,Combined,2050,1_2,3
-Camarasa,-,South America,Combined,2020,1_2,1
-Camarasa,-,South America,Combined,2025,1_2,1
-Camarasa,-,South America,Combined,2030,1_2,1
-Camarasa,-,South America,Combined,2035,1_2,1
-Camarasa,-,South America,Combined,2040,1_2,1
-Camarasa,-,South America,Combined,2045,1_2,2
-Camarasa,-,South America,Combined,2050,1_2,2
-Camarasa,-,US,Combined,2020,1_2,155
-Camarasa,-,US,Combined,2025,1_2,152
-Camarasa,-,US,Combined,2030,1_2,152
-Camarasa,-,US,Combined,2035,1_2,153
-Camarasa,-,US,Combined,2040,1_2,156
-Camarasa,-,US,Combined,2045,1_2,161
-Camarasa,-,US,Combined,2050,1_2,167
+Camarasa,-,NW Europe,Combined,2020,1_2,49.48
+Camarasa,-,NW Europe,Combined,2025,1_2,41.51
+Camarasa,-,NW Europe,Combined,2030,1_2,34.21
+Camarasa,-,NW Europe,Combined,2035,1_2,26.61
+Camarasa,-,NW Europe,Combined,2040,1_2,19.75
+Camarasa,-,NW Europe,Combined,2045,1_2,14.36
+Camarasa,-,NW Europe,Combined,2050,1_2,9.87
+Camarasa,-,SE Europe,Combined,2020,1_2,18.91
+Camarasa,-,SE Europe,Combined,2025,1_2,15.21
+Camarasa,-,SE Europe,Combined,2030,1_2,11.69
+Camarasa,-,SE Europe,Combined,2035,1_2,8.80
+Camarasa,-,SE Europe,Combined,2040,1_2,6.15
+Camarasa,-,SE Europe,Combined,2045,1_2,4.23
+Camarasa,-,SE Europe,Combined,2050,1_2,2.65
+Camarasa,-,South America,Combined,2020,1_2,30.58
+Camarasa,-,South America,Combined,2025,1_2,28.63
+Camarasa,-,South America,Combined,2030,1_2,27.77
+Camarasa,-,South America,Combined,2035,1_2,27.63
+Camarasa,-,South America,Combined,2040,1_2,27.85
+Camarasa,-,South America,Combined,2045,1_2,28.64
+Camarasa,-,South America,Combined,2050,1_2,29.28
+Camarasa,-,US,Combined,2020,1_2,1568
+Camarasa,-,US,Combined,2025,1_2,1189
+Camarasa,-,US,Combined,2030,1_2,1013
+Camarasa,-,US,Combined,2035,1_2,945
+Camarasa,-,US,Combined,2040,1_2,890
+Camarasa,-,US,Combined,2045,1_2,824
+Camarasa,-,US,Combined,2050,1_2,760
 Ostermeyer,-,Germany,Residential,2018,1_2,94
 Ostermeyer,-,Germany,Residential,2026,1_2,77
 Ostermeyer,-,Germany,Residential,2034,1_2,52

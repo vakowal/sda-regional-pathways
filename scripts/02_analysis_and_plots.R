@@ -4,11 +4,15 @@
 # and exploratory plots
 ################################
 
+# prep data files if they do not already exist
 # get location of related scripts
 library(rstudioapi)
 script_dir <- dirname(getSourceEditorContext()$path)
+source(paste0(script_dir, '/01_prep_data.R'), encoding='utf-8')
 
 # package imports, function definitions, and globals including directory
+library(rstudioapi)
+script_dir <- dirname(getSourceEditorContext()$path)
 source(paste0(script_dir, "/00_packages_functions_globals.R"))
 
 # plot SDA pathways calculated with different values of m parameter
@@ -33,21 +37,19 @@ for(region in unique(sda_pathways$Region)) {
   dev.off()
 }
 
-
-# TODO visualize empirical and SDA pathways
-
+# plot pathways for IPCC normative models, literature data vs SDA data
 # subset intensity pathways df to include only default m param pathways from SDA 
 # and pathways from literature
-intensity_paths_subs <- intensity_paths_all[(intensity_paths_all$m_flag == 0) | 
-                                              (is.na(intensity_paths_all$m_flag)), ]
-
-
-# plot pathways for IPCC normative models, literature data vs SDA data
-ipcc_paths <- filter(intensity_paths_subs, Reference_key ==  "IPCC_normative")
-
-for (region in unique(ipcc_paths$Region)) {
-  int_subs <- ipcc_paths[ipcc_paths$Region == region, ]
-  p<- ggplot(int_subs, aes(x = Year, y = intensity, group = method)) +
+intensity_paths_all <- read.csv(
+  paste0(wd$processed_data, 'intensity_paths_all.csv'))
+intensity_paths_subs <- intensity_paths_all[
+  (intensity_paths_all$m_flag == 0) | (is.na(intensity_paths_all$m_flag)), ]
+intensity_paths_subs[
+  intensity_paths_subs$Scenario_key == "-", 'Scenario_key'] <- intensity_paths_subs[
+    intensity_paths_subs$Scenario_key == "-", 'Reference_key']
+for (region in unique(intensity_paths_subs$Region)) {
+  int_subs <- intensity_paths_subs[intensity_paths_subs$Region == region, ]
+  p <- ggplot(int_subs, aes(x = Year, y = intensity, group = method)) +
       geom_line(aes(colour = method)) +
       facet_grid(Region ~ Scenario_key) +
       labs(fill = "Method") +
@@ -61,34 +63,3 @@ for (region in unique(ipcc_paths$Region)) {
   dev.off()
   print(region)
 }
-
-
-
-## DEMONSTRATION, THROWAWAY ##
-# demo: do analysis
-example_processed_data <- read.csv(
-  paste0(wd$processed_data, 'example_processed_data.csv'))
-
-# demo: make plots
- example_plot <- ggplot(example_processed_data, aes(
-    x = Model...Scenario, y = intensity_target_year_scope1_2))
-
-
-example_plot <- example_plot + geom_point() + facet_wrap(~Region) 
-ggsave(filename = "example_plot.png", 
-       plot = example_plot,
-       path = wd$figs,
-       width = 6,
-       height = 6,
-       units = "in",
-       dpi = 300)
-
-example_plot <- ggplot(
-  example_processed_data, aes(
-    x=Model...Scenario, y=intensity_target_year_scope1_2))
-example_plot <- example_plot + geom_point() + facet_wrap(~Region)
-pngname <- paste0(wd$figs, "example_plot.png")
-png(filename=pngname, width=6, height=6, units='in', res=300)
-print(example_plot)
-dev.off()
-
