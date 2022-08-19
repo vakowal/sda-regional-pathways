@@ -44,10 +44,11 @@ intensity_paths_all <- read.csv(
   paste0(wd$processed_data, 'intensity_paths_all.csv'))
 intensity_paths_subs <- intensity_paths_all[
   (intensity_paths_all$m_flag == 0) | (is.na(intensity_paths_all$m_flag)), ]
-ipcc_paths <- filter(intensity_paths_subs, Reference_key ==  "IPCC_normative")
-
-for (region in unique(ipcc_paths$Region)) {
-  int_subs <- ipcc_paths[ipcc_paths$Region == region, ]
+intensity_paths_subs[
+  intensity_paths_subs$Scenario_key == "-", 'Scenario_key'] <- intensity_paths_subs[
+    intensity_paths_subs$Scenario_key == "-", 'Reference_key']
+for (region in unique(intensity_paths_subs$Region)) {
+  int_subs <- intensity_paths_subs[intensity_paths_subs$Region == region, ]
   p <- ggplot(int_subs, aes(x = Year, y = intensity, group = method)) +
       geom_line(aes(colour = method)) +
       facet_grid(Region ~ Scenario_key) +
