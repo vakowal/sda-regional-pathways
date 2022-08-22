@@ -1,0 +1,36 @@
+"year","Reference_key","Scenario_key","Region","Sector","intensity_SDA.default","intensity_SDA.m = 1","m_diff"
+2030,"IPCC_normative","IMAGE","Africa","Combined",4.86502709178475,5.92604658994558,1.06101949816083
+2030,"IPCC_normative","SDS","Africa","Combined",5.01048879818749,5.75507082802043,0.74458202983294
+2030,"IPCC_normative","IMAGE","Asia Pacific Developed","Combined",253.491905517614,253.491905517614,0
+2030,"IPCC_normative","SDS","Asia Pacific Developed","Combined",178.401853059244,188.603762798915,10.201909739671
+2030,"Camarasa","Camarasa","China","Combined",14.4191615414568,14.4191615414568,0
+2030,"IPCC_normative","IMAGE","Eastern Asia","Combined",33.8602925161954,33.8602925161954,0
+2030,"IPCC_normative","SDS","Eastern Asia","Combined",12.7051468835473,12.7051468835473,0
+2030,"IPCC_normative","IMAGE","Europe and Eurasia","Combined",25.8983304293523,25.8983304293523,0
+2030,"IPCC_normative","SDS","Europe and Eurasia","Combined",27.3432815382744,27.3432815382744,0
+2030,"Burger","Burger","Germany","Combined",11.6001416564925,11.6001416564925,0
+2030,"Yu","Yu","India","Combined",4.79778233290991,5.62115969731846,0.82337736440855
+2030,"IPCC_normative","IMAGE","Latin America and Caribbean","Combined",9.53413732650154,9.53413732650154,0
+2030,"IPCC_normative","SDS","Latin America and Caribbean","Combined",10.1251569234163,11.8133196963228,1.6881627729065
+2030,"IPCC_normative","IMAGE","Middle East","Combined",29.9081901258017,30.3268666350287,0.418676509227002
+2030,"IPCC_normative","SDS","Middle East","Combined",36.333123548742,44.01718693358,7.684063384838
+2030,"IPCC_normative","IMAGE","North America","Combined",22.9278560595089,22.9278560595089,0
+2030,"IPCC_normative","SDS","North America","Combined",20.06121755024,20.06121755024,0
+2030,"Camarasa","Camarasa","NW Europe","Combined",12.9806597637391,12.9806597637391,0
+2030,"Camarasa","Camarasa","SE Europe","Combined",9.09259205241802,9.09259205241802,0
+2030,"Camarasa","Camarasa","South America","Combined",1.77150734925407,1.77150734925407,0
+2030,"IPCC_normative","IMAGE","Southeast Asia and Developing Pacific","Combined",15.351756159016,15.6305272149304,0.278771055914399
+2030,"IPCC_normative","SDS","Southeast Asia and Developing Pacific","Combined",16.5271337473715,17.7518355739569,1.2247018265854
+2030,"IPCC_normative","IMAGE","Southern Asia","Combined",8.26437730069493,8.45110901323131,0.18673171253638
+2030,"IPCC_normative","SDS","Southern Asia","Combined",5.69446945452981,8.61244539118003,2.91797593665022
+2030,"Camarasa","Camarasa","US","Combined",19.6290808929767,19.6290808929767,0
+2030,"IPCC_normative","RECC","Africa","Residential",2.21189703838358,2.68782312838956,0.47592609000598
+2030,"IPCC_normative","RECC","Asia Pacific Developed","Residential",57.1080672001199,57.1080672001199,0
+2030,"IPCC_normative","RECC","Eastern Asia","Residential",8.19023658049174,8.19023658049174,0
+2030,"IPCC_normative","RECC","Europe and Eurasia","Residential",24.5165979770039,24.5165979770039,0
+2030,"Ostermeyer","Ostermeyer","Germany","Residential",16.6639194782593,16.6639194782593,0
+2030,"IPCC_normative","RECC","Latin America and Caribbean","Residential",4.85068087030188,4.85068087030188,0
+2030,"IPCC_normative","RECC","Middle East","Residential",11.2871012095776,11.2871012095776,0
+2030,"IPCC_normative","RECC","North America","Residential",12.2029379118442,12.2029379118442,0
+2030,"IPCC_normative","RECC","Southeast Asia and Developing Pacific","Residential",11.1496270577616,12.4721102218533,1.3224831640917
+2030,"IPCC_normative","RECC","Southern Asia","Residential",2.05737162110266,2.12609097178532,0.06871935068266

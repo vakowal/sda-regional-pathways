@@ -44,6 +44,19 @@ for(region in unique(sda_pathways_subs$Region)) {
   dev.off()
 }
 
+# make a table: difference between default m and m=1, in the year 2030
+m_2030_df <- sda_pathways_subs[sda_pathways_subs$year == 2030, ]
+m_2030_res <- reshape(m_2030_df, direction='wide',
+                      idvar=c('Reference_key', 'Scenario_key', 'Region',
+                              'Sector'), timevar='m parameter option',
+                      v.names='intensity_SDA', drop='m_flag')
+m_2030_res$m_diff <- (
+  m_2030_res$`intensity_SDA.m = 1` - m_2030_res$intensity_SDA.default)
+# write out for reshaping and formatting by hand
+write.csv(m_2030_res, file=paste0(
+  wd$processed_data, 'diff_SDA_intensity_m_default_m=1_2030.csv'),
+  row.names=FALSE)
+
 # plot pathways for IPCC normative models, literature data vs SDA data
 # subset intensity pathways df to include only default m param pathways from SDA 
 # and pathways from literature
