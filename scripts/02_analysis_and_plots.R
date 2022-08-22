@@ -19,23 +19,43 @@ source(paste0(script_dir, "/00_packages_functions_globals.R"))
 sda_pathways <- read.csv(
   paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))
 
-sda_pathways$m_parameter_option <- factor(
-  sda_pathways$m_flag, levels <- c(0, 1, 2),
-  labels=c('default', 'm = 1', 'm floor = 0.8'))
-for(region in unique(sda_pathways$Region)) {
-  subs_df <- sda_pathways[sda_pathways$Region == region, ]
-  p <- ggplot(subs_df, aes(x=year, y=intensity_SDA, group=m_parameter_option))
-  p <- p + geom_line(aes(colour=m_parameter_option))
-  p <- p + facet_grid(Reference_key~Scenario_key)
+# do not plot the m floor option
+sda_pathways_subs <- sda_pathways[sda_pathways$m_flag < 2, ]
+sda_pathways_subs[, 'm parameter option'] <- factor( 
+  sda_pathways_subs$m_flag, levels <- c(0, 1), labels=c('default', 'm = 1'))
+
+# hack so that different references appear in one row
+sda_pathways_subs[
+  sda_pathways_subs$Scenario_key == "-", 'Scenario_key'] <- sda_pathways_subs[
+    sda_pathways_subs$Scenario_key == "-", 'Reference_key']
+for(region in unique(sda_pathways_subs$Region)) {
+  subs_df <- sda_pathways_subs[sda_pathways_subs$Region == region, ]
+  num_cols <- length(unique(subs_df$Scenario_key))
+  p <- ggplot(subs_df, aes(x=year, y=intensity_SDA, group=`m parameter option`))
+  p <- p + geom_line(aes(linetype=`m parameter option`))
+  p <- p + facet_wrap(~Scenario_key)
   p <- p + labs(fill="m parameter option")
   p <- p + ylab("SDA Intensity (kg CO2 / m2)") + 
-            ggtitle(region, subtitle = "M parameter testing") + 
-            theme(axis.text.x = element_text(angle = 45))
+                ggtitle(region, subtitle = "M parameter testing") + 
+                theme(axis.text.x = element_text(angle = 45))
   filename <- paste0(wd$figs, paste0("m_param_", region, ".png"))
-  png(filename, width=6, height=3, units='in', res=300)
+  png(filename, width=((num_cols * 2.5) + 2.5), height=4, units='in', res=300)
   print(p)
   dev.off()
 }
+
+# make a table: difference between default m and m=1, in the year 2030
+m_2030_df <- sda_pathways_subs[sda_pathways_subs$year == 2030, ]
+m_2030_res <- reshape(m_2030_df, direction='wide',
+                      idvar=c('Reference_key', 'Scenario_key', 'Region',
+                              'Sector'), timevar='m parameter option',
+                      v.names='intensity_SDA', drop='m_flag')
+m_2030_res$m_diff <- (
+  m_2030_res$`intensity_SDA.m = 1` - m_2030_res$intensity_SDA.default)
+# write out for reshaping and formatting by hand
+write.csv(m_2030_res, file=paste0(
+  wd$processed_data, 'diff_SDA_intensity_m_default_m=1_2030.csv'),
+  row.names=FALSE)
 
 # plot pathways for IPCC normative models, literature data vs SDA data
 # subset intensity pathways df to include only default m param pathways from SDA 
