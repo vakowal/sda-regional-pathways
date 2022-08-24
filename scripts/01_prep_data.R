@@ -172,9 +172,9 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))) {
     company_activity <- seq(
       company_activity_base, company_activity_target,
       length.out=(TARGET_YEAR-BASE_YEAR) + 1)
-    sector_activity <- sector_data_processed[
-      (sector_data_processed$year >= BASE_YEAR &
-         sector_data_processed$Sector == sect_key), 'Sector_activity']
+    sector_activity <- processed_sector_data[
+      (processed_sector_data$year >= BASE_YEAR &
+         processed_sector_data$Sector == sect_key), 'Sector_activity']
     
     company_emissions_base <- subset(
       processed_emp_emissions,
@@ -182,9 +182,9 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))) {
         (Region == reg_key) & (Sector == sect_key) & (Year == BASE_YEAR),
       select=Emissions_MtCO2)[[1]] * 1000000
     
-    sector_emissions <- sector_data_processed[
-      (sector_data_processed$year >= BASE_YEAR &
-         sector_data_processed$Sector == sect_key), 'Sector_Scope_1_2_emissions']
+    sector_emissions <- processed_sector_data[
+      (processed_sector_data$year >= BASE_YEAR &
+         processed_sector_data$Sector == sect_key), 'Sector_Scope_1_2_emissions']
     
     # different ways of calculating m
     for(m_flag in c(0, 1, 2)) {
@@ -196,7 +196,11 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))) {
       intensity_df$Region <- reg_key
       intensity_df$Sector <- sect_key
       intensity_df$m_flag <- m_flag
-      df_list[[df_idx]] <- intensity_df
+      
+      abs_emissions_df <- CalcAbsolutePathway(
+        company_activity, intensity_df$intensity_SDA)
+      combined_df <- merge(intensity_df, abs_emissions_df)
+      df_list[[df_idx]] <- combined_df
       df_idx <- df_idx + 1
     }
   }

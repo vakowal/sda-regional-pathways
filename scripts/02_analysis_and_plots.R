@@ -24,6 +24,7 @@ sda_pathways_subs <- sda_pathways[sda_pathways$m_flag < 2, ]
 sda_pathways_subs[, 'm parameter option'] <- factor( 
   sda_pathways_subs$m_flag, levels <- c(0, 1), labels=c('default', 'm = 1'))
 
+# plot pathways with different values of m
 # hack so that different references appear in one row
 sda_pathways_subs[
   sda_pathways_subs$Scenario_key == "-", 'Scenario_key'] <- sda_pathways_subs[
@@ -55,6 +56,22 @@ m_2030_res$m_diff <- (
 # write out for reshaping and formatting by hand
 write.csv(m_2030_res, file=paste0(
   wd$processed_data, 'diff_SDA_intensity_m_default_m=1_2030.csv'),
+  row.names=FALSE)
+
+# calculate cumulative emissions difference between versions of m
+sum_emissions_df <- aggregate(
+  abs_emissions~Reference_key + Scenario_key + Region + `m parameter option`,
+  data=sda_pathways_subs, FUN=sum)  # TODO potentially sum up other ranges
+sum_emissions_res <- reshape(sum_emissions_df, direction='wide',
+                             idvar=c('Reference_key', 'Scenario_key', 'Region'),
+                             timevar='m parameter option',
+                             v.names='abs_emissions')
+sum_emissions_res$diff <- (
+  sum_emissions_res$`abs_emissions.m = 1` -
+    sum_emissions_res$abs_emissions.default)
+# write out for reshaping and formatting by hand
+write.csv(sum_emissions_res, file=paste0(
+  wd$processed_data, 'diff_SDA_cumulative_emissions_m_default_m=1_2020-2050.csv'),
   row.names=FALSE)
 
 # plot pathways for IPCC normative models, literature data vs SDA data
