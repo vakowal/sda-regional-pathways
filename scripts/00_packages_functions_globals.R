@@ -11,11 +11,29 @@ library(rstudioapi)
 # globals
 BASE_YEAR = 2020
 TARGET_YEAR = 2050
+INTENSITY_CONVERSION = 1000
 
 script_dir <- dirname(getSourceEditorContext()$path)
 repo_dir <- dirname(script_dir)
 
 # Custom functions
+
+# Calculate absolute emissions from an intensity pathway.
+# Args:
+#  - company_activity (vector): activity (m2) of company by year, from base
+#    year to target year
+#  - intensity_pathway (vector): intensity (kCO2/m2) of company by year, from
+#    base year to target year
+# Returns:
+#  - a data frame containing company_emissions in tCO2e and year
+CalcAbsolutePathway <- function(company_activity, company_intensity){
+  company_emissions <- (
+    company_activity * (company_intensity / INTENSITY_CONVERSION))
+  result_df <- data.frame(
+    year=seq(BASE_YEAR, TARGET_YEAR, by=1),
+    abs_emissions=company_emissions)
+  return(result_df)
+}
 
 # Calculate intensity pathway.
 # Args:
@@ -36,7 +54,8 @@ CalcIntensityPathway <- function(
     sector_activity, sector_emissions, m_flag){
   sector_intensity <- (sector_emissions * 1000000) / sector_activity
   SI_2050 <- sector_intensity[length(sector_intensity)]  # final item must describe 2050
-  CI_base <- (company_emissions_base * 1000) / company_activity[1]  # TODO check units here
+  CI_base <- (company_emissions_base * INTENSITY_CONVERSION) /
+    company_activity[1]
   d_diff_param <- CI_base - SI_2050
   m_param <- if(m_flag == 1){
     CalcMParam_v1(company_activity, sector_activity)

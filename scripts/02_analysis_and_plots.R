@@ -28,6 +28,8 @@ sda_pathways_subs[, 'm parameter option'] <- factor(
 sda_pathways_subs[
   sda_pathways_subs$Scenario_key == "-", 'Scenario_key'] <- sda_pathways_subs[
     sda_pathways_subs$Scenario_key == "-", 'Reference_key']
+
+# plot pathways with different values of m
 for(region in unique(sda_pathways_subs$Region)) {
   subs_df <- sda_pathways_subs[sda_pathways_subs$Region == region, ]
   num_cols <- length(unique(subs_df$Scenario_key))
@@ -56,6 +58,56 @@ m_2030_res$m_diff <- (
 write.csv(m_2030_res, file=paste0(
   wd$processed_data, 'diff_SDA_intensity_m_default_m=1_2030.csv'),
   row.names=FALSE)
+
+# calculate cumulative emissions difference between versions of m
+sum_emissions_df <- aggregate(
+  abs_emissions~Reference_key + Scenario_key + Region + `m parameter option`,
+  data=sda_pathways_subs, FUN=sum)  # TODO potentially sum up other ranges
+sum_emissions_res <- reshape(sum_emissions_df, direction='wide',
+                             idvar=c('Reference_key', 'Scenario_key', 'Region'),
+                             timevar='m parameter option',
+                             v.names='abs_emissions')
+sum_emissions_res$diff_MtCO2 <- (
+  sum_emissions_res$`abs_emissions.m = 1` -
+    sum_emissions_res$abs_emissions.default) / 1000
+# write out for reshaping and formatting by hand
+write.csv(sum_emissions_res, file=paste0(
+  wd$processed_data, 'diff_SDA_cumulative_emissions_m_default_m=1_2020-2050.csv'),
+  row.names=FALSE)
+
+# display cumulative emissions for regions that show a difference
+comb_info_df <- sum_emissions_res[sum_emissions_res$diff > 0, ]
+df_list <- list()
+df_idx <- 1
+for(row_idx in 1:nrow(comb_info_df)) {
+  ref_key <- comb_info_df[row_idx, 1]
+  scen_key <- comb_info_df[row_idx, 2]
+  reg_key <- comb_info_df[row_idx, 3]
+  for (m_key in unique(sda_pathways_subs$m_flag)) {
+    subs_df <- sda_pathways_subs[(
+      (sda_pathways_subs$Reference_key == ref_key) &
+        (sda_pathways_subs$Scenario_key == scen_key) &
+        (sda_pathways_subs$Region == reg_key) &
+        (sda_pathways_subs$m_flag == m_key)), ]
+    subs_df <- subs_df[order(subs_df$year), ]
+    subs_df$cumulative_emissions <- cumsum(subs_df$abs_emissions)
+    df_list[[df_idx]] <- subs_df
+    df_idx <- df_idx + 1
+  }
+}
+cumulative_df <- do.call(rbind, df_list)
+
+p <- ggplot(cumulative_df, aes(x=year, y=cumulative_emissions / 1000000,
+                               group=`m parameter option`)) +
+  geom_line(aes(linetype=`m parameter option`)) +
+  facet_grid(Scenario_key~Region, scales='free') +
+  ylab("Cumulative emissions (MtCO2)") + xlab("") +
+  theme(axis.text.x = element_text(angle = 45), legend.position='bottom',
+        legend.title=element_blank())
+filename <- paste0(wd$figs, "cumulative_emissions_m_versions.png")
+png(filename, width=8, height=5, units = 'in', res = 300)
+print(p)
+dev.off()
 
 # plot pathways for IPCC normative models, literature data vs SDA data
 # subset intensity pathways df to include only default m param pathways from SDA 
