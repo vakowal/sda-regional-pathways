@@ -69,7 +69,7 @@ sum_emissions_res <- reshape(sum_emissions_df, direction='wide',
                              v.names='abs_emissions')
 sum_emissions_res$diff_MtCO2 <- (
   sum_emissions_res$`abs_emissions.m = 1` -
-    sum_emissions_res$abs_emissions.default) / 1000
+    sum_emissions_res$abs_emissions.default) / 1000000
 # write out for reshaping and formatting by hand
 write.csv(sum_emissions_res, file=paste0(
   wd$processed_data, 'diff_SDA_cumulative_emissions_m_default_m=1_2020-2050.csv'),
