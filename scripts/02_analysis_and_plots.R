@@ -84,6 +84,39 @@ for (region in unique(intensity_paths_subs$Region)) {
   print(region)
 }
 
+
+# plot faceted grid showing above IPCC normative models lit data vs SDA data for 
+# only Africa, Europe & Eurasia, N. America, SE Asia & Developing Pacific
+facet_subs <- subset(intensity_paths_subs, 
+                     Region %in% c("Africa", "Europe and Eurasia",
+                                   "North America", "Southeast Asia and Developing Pacific"))
+
+facet_subs$Region <- str_replace_all(facet_subs$Region, 
+                                     "Southeast Asia and Developing Pacific",
+                                     "SE Asia & Dev. Pacific")
+
+facet_subs$Region <- str_replace_all(facet_subs$Region, 
+                                     "Europe and Eurasia",
+                                     "Europe & Eurasia")
+
+facet_subs$Scenario_key <- factor(facet_subs$Scenario_key, 
+                                  levels = c("IMAGE", "SDS", "RECC"))
+
+
+
+p <- ggplot(facet_subs, aes(x = Year, y = intensity, group = method)) +
+     geom_line(aes(colour = method)) +
+     facet_grid(Region ~ Scenario_key) +
+     labs(fill = "Method") +
+     ggtitle("SDA vs. top-down literature pathways") +
+     xlab("") +
+     theme(axis.text = element_text(angle = 45)) +
+     ylab("Intensity (kg CO2 / m2)")
+filename <- paste0(wd$figs, "SDA_vs_Lit_CRREM_review.png")
+png(filename, width = 7, height = 7, units = 'in', res = 300)
+print(p)
+dev.off()
+
 # plot CRREM EU country-level pathways vs Ostermeyer country-level bottom-up pathways
 # subset df to include only countries included in both sources: 
 # France, Germany, Poland
@@ -106,3 +139,33 @@ for (country in unique(CRREM_ost_subs$country)) {
   dev.off()
   print(country)
 }
+
+# plot bottom-up country level examples from Camarasa
+camarasa <- subset(intensity_paths_subs, Region %in% c("China", "US"))
+
+p <- ggplot(camarasa, aes(x = Year, y = intensity, group = method)) +
+     geom_line(aes(colour = method)) +
+     facet_grid(vars(Region)) +
+     labs(fill = "Method") +
+     ggtitle("SDA vs. bottom-up literature pathways") +
+     xlab("") +
+     theme(axis.text.x = element_text(angle = 45)) +
+     ylab("Intensity (kg CO2 / m2")
+filename <- paste0(wd$figs, "Camarasa_China_US.png")
+png(filename, width = 7, height = 7, units = 'in', res = 300)
+print(p)
+dev.off()
+
+# plot faceted grid showing CRREM EU country-level pathways vs Ostermeyer
+p <- ggplot(CRREM_ost_subs, aes(x = year, y = intensity, group = Scenario_key)) +
+     geom_line(aes(colour = Scenario_key)) +
+     facet_grid(vars(country)) +
+     labs(fill = "Scenario_key") +
+     ggtitle("CRREM vs. bottom-up country pathways") +
+     xlab("") +
+     theme(axis.text.x = element_text(angle = 45)) +
+     ylab("Intensity (kg CO2 / m2")
+filename <- (paste0(wd$figs, "CRREM_vs_Ostermeyer_review.png"))
+png(filename, width = 7, height = 7, units = 'in', res = 300)
+print(p)
+dev.off()
