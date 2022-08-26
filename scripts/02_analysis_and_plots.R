@@ -17,12 +17,14 @@ source(paste0(script_dir, "/00_packages_functions_globals.R"))
 
 # plot SDA pathways calculated with different values of m parameter
 sda_pathways <- read.csv(
-  paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))
+  paste0(wd$processed_data,'SDA_pathways_m_0_1_2_3.csv'))
 
 # do not plot the m floor option
-sda_pathways_subs <- sda_pathways[sda_pathways$m_flag < 2, ]
+sda_pathways_subs <- sda_pathways[sda_pathways$m_flag != 2, ]
 sda_pathways_subs[, 'm parameter option'] <- factor( 
-  sda_pathways_subs$m_flag, levels <- c(0, 1), labels=c('default', 'm = 1'))
+  sda_pathways_subs$m_flag, levels <- c(0, 1, 3), labels=c('default', 
+                                                           'm = 1',
+                                                           'no cap'))
 
 # hack so that different references appear in one row
 sda_pathways_subs[
@@ -34,17 +36,47 @@ for(region in unique(sda_pathways_subs$Region)) {
   subs_df <- sda_pathways_subs[sda_pathways_subs$Region == region, ]
   num_cols <- length(unique(subs_df$Scenario_key))
   p <- ggplot(subs_df, aes(x=year, y=intensity_SDA, group=`m parameter option`))
-  p <- p + geom_line(aes(linetype=`m parameter option`))
+  p <- p + geom_line(aes(linetype=`m parameter option`)) +
+       scale_linetype_manual(values = c("solid", "dashed", "dotted"))
   p <- p + facet_wrap(~Scenario_key)
   p <- p + labs(fill="m parameter option")
   p <- p + ylab("SDA Intensity (kg CO2 / m2)") + 
                 ggtitle(region, subtitle = "M parameter testing") + 
                 theme(axis.text.x = element_text(angle = 45))
-  filename <- paste0(wd$figs, paste0("m_param_", region, ".png"))
+  filename <- paste0(wd$figs, paste0("m_no_cap", region, ".png"))
   png(filename, width=((num_cols * 2.5) + 2.5), height=4, units='in', res=300)
   print(p)
   dev.off()
 }
+
+# plot faceted grid showing subset of regions for m param testing
+m_facet <- subset(sda_pathways_subs, 
+                     Region %in% c("Africa", "Middle East", 
+                                   "Southeast Asia and Developing Pacific", 
+                                   "Southern Asia"))
+
+m_facet$Region <- str_replace_all(m_facet$Region, 
+                                     "Southeast Asia and Developing Pacific",
+                                     "SE Asia & Dev. Pacific")
+
+m_facet$Scenario_key <- factor(m_facet$Scenario_key, 
+                                  levels = c("IMAGE", "SDS", "RECC"))
+
+
+p <- ggplot(m_facet, aes(x = year, y = intensity_SDA, group = `m parameter option`)) +
+     geom_line(aes(linetype=`m parameter option`)) +
+     scale_linetype_manual(values = c("solid", "dashed", "dotted")) +
+     facet_grid(Region ~ Scenario_key) +
+     labs(fill = "m parameter option") +
+     ggtitle("M parameter testing") +
+     xlab("") +
+     theme(axis.text = element_text(angle = 45)) +
+     ylab("SDA Intensity (kg CO2 / m2)")
+filename <- paste0(wd$figs, "m_param_no_cap_facet.png")
+png(filename, width = 7, height = 7, units = 'in', res = 300)
+print(p)
+dev.off()
+
 
 # make a table: difference between default m and m=1, in the year 2030
 m_2030_df <- sda_pathways_subs[sda_pathways_subs$year == 2030, ]
@@ -74,6 +106,8 @@ sum_emissions_res$diff_MtCO2 <- (
 write.csv(sum_emissions_res, file=paste0(
   wd$processed_data, 'diff_SDA_cumulative_emissions_m_default_m=1_2020-2050.csv'),
   row.names=FALSE)
+
+
 
 # display cumulative emissions for regions that show a difference
 comb_info_df <- sum_emissions_res[sum_emissions_res$diff > 0, ]
@@ -108,6 +142,8 @@ filename <- paste0(wd$figs, "cumulative_emissions_m_versions.png")
 png(filename, width=8, height=5, units = 'in', res = 300)
 print(p)
 dev.off()
+
+
 
 # plot pathways for IPCC normative models, literature data vs SDA data
 # subset intensity pathways df to include only default m param pathways from SDA 

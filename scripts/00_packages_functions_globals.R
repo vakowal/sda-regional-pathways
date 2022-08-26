@@ -61,6 +61,8 @@ CalcIntensityPathway <- function(
     CalcMParam_v1(company_activity, sector_activity)
   } else if (m_flag == 2){
     CalcMParam_v2(company_activity, sector_activity)
+  } else if (m_flag == 3){
+    CalcMParam_v3(company_activity, sector_activity)
   } else {
     CalcMParam_v0(company_activity, sector_activity)
   }
@@ -80,7 +82,7 @@ CalcIntensityPathway <- function(
 #   - sector activity (vector): activity (m2) of sector by year
 # Returns:
 # A vector showing m parameter for each year between base year and target year.
-# The two vectors - company_activity and sector_activity - must have identical 
+# The two input vectors - company_activity and sector_activity - must have identical 
 # length and must begin with the base year.
 CalcMParam_v0 <- function(company_activity, sector_activity){
   base_year_ratio <- (
@@ -96,7 +98,7 @@ CalcMParam_v0 <- function(company_activity, sector_activity){
 #   - sector activity (vector): activity (m2) of sector by year
 # Returns:
 # A vector showing m parameter for each year between base year and target year.
-# The two vectors - company_activity and sector_activity - must have identical 
+# The two input vectors - company_activity and sector_activity - must have identical 
 # length and must begin with the base year.
 CalcMParam_v1 <- function(company_activity, sector_activity){
   m_param <- rep(1, length(company_activity))
@@ -117,6 +119,21 @@ CalcMParam_v2 <- function(company_activity, sector_activity){
   m_param <- base_year_ratio / (company_activity / sector_activity)
   m_param[m_param > 1] <- 1
   m_param[m_param < 0.8] <- 0.8
+  return(m_param)
+}
+
+# Version 3 calculation of m parameter - no ceiling
+# Args:
+#   - company activity (vector): activity (m2) of company by year
+#   - sector activity (vector): activity (m2) of sector by year
+# Returns:
+# A vector showing m parameter for each year between base year and target year.
+# The two input vectors - company_activity and sector_activity - must have identical 
+# length and must begin with the base year.
+CalcMParam_v3 <- function(company_activity, sector_activity){
+  base_year_ratio <- (
+    company_activity[1] / sector_activity[1])
+  m_param <- base_year_ratio / (company_activity / sector_activity)
   return(m_param)
 }
 

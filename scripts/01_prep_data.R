@@ -139,7 +139,7 @@ if (!file.exists(paste0(wd$processed_data, 'processed_sector_data.csv'))) {
 }
  
 # calculate SDA pathways if they don't already exist
-if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))) {
+if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2_3.csv'))) {
   processed_emp_emissions <- read.csv(
     paste0(wd$processed_data, 'processed_empirical_emissions.csv'))
   processed_emp_activity <- read.csv(
@@ -187,7 +187,7 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))) {
          processed_sector_data$Sector == sect_key), 'Sector_Scope_1_2_emissions']
     
     # different ways of calculating m
-    for(m_flag in c(0, 1, 2)) {
+    for(m_flag in c(0, 1, 2, 3)) {
       intensity_df <- CalcIntensityPathway(
         company_activity, company_emissions_base, sector_activity,
         sector_emissions, m_flag)
@@ -207,7 +207,7 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))) {
   results_combined <- do.call(rbind, df_list)
   write.csv(
     results_combined,
-    paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'),
+    paste0(wd$processed_data,'SDA_pathways_m_0_1_2_3.csv'),
     row.names=FALSE)
   print("Generated SDA pathways from empirical emissions and activity")
 } else {
