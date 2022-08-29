@@ -115,11 +115,13 @@ if (!file.exists(paste0(wd$processed_data, 'processed_sector_data.csv'))) {
   buildings_sector_data <- read.csv(
     paste0(wd$raw_data, 'buildings_sector_data.csv'))
   combined_s1_emissions <- aggregate(
-    Sector_Scope_1_emissions~year, data=buildings_sector_data, FUN=sum)
+    Sector_Scope_1_emissions~year + Scenario, data=buildings_sector_data,
+    FUN=sum)
   combined_s2_emissions <- aggregate(
-    Sector_Scope_2_emissions~year, data=buildings_sector_data, FUN=sum)
+    Sector_Scope_2_emissions~year + Scenario, data=buildings_sector_data,
+    FUN=sum)
   combined_activity <- aggregate(
-    Sector_activity~year, data=buildings_sector_data, FUN=sum)
+    Sector_activity~year + Scenario, data=buildings_sector_data, FUN=sum)
   combined_emissions <- merge(combined_s1_emissions, combined_s2_emissions)
   combined_sector <- merge(combined_emissions, combined_activity)
   combined_sector$Sector <- 'Combined'
