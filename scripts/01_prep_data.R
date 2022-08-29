@@ -174,19 +174,37 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2_3.csv'))) {
     company_activity <- seq(
       company_activity_base, company_activity_target,
       length.out=(TARGET_YEAR-BASE_YEAR) + 1)
-    sector_activity <- processed_sector_data[
-      (processed_sector_data$year >= BASE_YEAR &
-         processed_sector_data$Sector == sect_key), 'Sector_activity']
+    if (scen_key == 'IMAGE' | scen_key == 'SDS') {
+      # use 2 degree global pathway for comparison to these sources
+      sector_activity <- processed_sector_data[
+        (processed_sector_data$year >= BASE_YEAR &
+           processed_sector_data$Sector == sect_key &
+           processed_sector_data$Scenario == 'ETP_B2DS'), 'Sector_activity']
+      
+      sector_emissions <- processed_sector_data[
+        (processed_sector_data$year >= BASE_YEAR &
+           processed_sector_data$Sector == sect_key &
+           processed_sector_data$Scenario == 'ETP_B2DS'),
+        'Sector_Scope_1_2_emissions']
+    } else {
+      # use the current 1.5 degree global pathway for all other sources
+      sector_activity <- processed_sector_data[
+        (processed_sector_data$year >= BASE_YEAR &
+           processed_sector_data$Sector == sect_key &
+           processed_sector_data$Scenario == 'SBTi_1.5C'), 'Sector_activity']
+      
+      sector_emissions <- processed_sector_data[
+        (processed_sector_data$year >= BASE_YEAR &
+           processed_sector_data$Sector == sect_key &
+           processed_sector_data$Scenario == 'SBTi_1.5C'),
+        'Sector_Scope_1_2_emissions']
+    }
     
     company_emissions_base <- subset(
       processed_emp_emissions,
       (Reference_key == ref_key) & (Scenario_key == scen_key) &
         (Region == reg_key) & (Sector == sect_key) & (Year == BASE_YEAR),
       select=Emissions_MtCO2)[[1]] * 1000000
-    
-    sector_emissions <- processed_sector_data[
-      (processed_sector_data$year >= BASE_YEAR &
-         processed_sector_data$Sector == sect_key), 'Sector_Scope_1_2_emissions']
     
     # different ways of calculating m
     for(m_flag in c(0, 1, 2, 3)) {
@@ -230,7 +248,8 @@ if (!file.exists(paste0(wd$processed_data, 'intensity_paths_all.csv'))) {
   empirical_intensity$method <- "Literature"
   
   # merge empirical and SDA intensity pathways
-  SDA_pathways <- read.csv(paste0(wd$processed_data,'SDA_pathways_m_0_1_2.csv'))
+  SDA_pathways <- read.csv(
+    paste0(wd$processed_data,'SDA_pathways_m_0_1_2_3.csv'))
   SDA_pathways$method <- "SDA"
   colnames(SDA_pathways)[2] <- "intensity"
   colnames(SDA_pathways)[1] <- "Year"
