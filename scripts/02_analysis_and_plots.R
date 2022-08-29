@@ -130,6 +130,8 @@ for(row_idx in 1:nrow(comb_info_df)) {
   }
 }
 cumulative_df <- do.call(rbind, df_list)
+# Remove no cap m flag
+cumulative_df <- subset(cumulative_df, m_flag != 3)
 
 p <- ggplot(cumulative_df, aes(x=year, y=cumulative_emissions / 1000000,
                                group=`m parameter option`)) +
@@ -143,7 +145,52 @@ png(filename, width=8, height=5, units = 'in', res = 300)
 print(p)
 dev.off()
 
+# Repeat above analysis and plotting for m no cap vs default m
+sum_emissions_nocap <- aggregate(
+  abs_emissions~Reference_key + Scenario_key + Region + `m parameter option`,
+  data=sda_pathways_subs, FUN=sum)  # TODO potentially sum up other ranges
+sum_emissions_nocap_res <- reshape(sum_emissions_nocap, direction='wide',
+                             idvar=c('Reference_key', 'Scenario_key', 'Region'),
+                             timevar='m parameter option',
+                             v.names='abs_emissions')
+sum_emissions_nocap_res$diff_MtCO2 <- (
+  sum_emissions_nocap_res$`abs_emissions.no cap` -
+    sum_emissions_res$abs_emissions.default) / 1000000
 
+comb_info_df_nocap <- sum_emissions_nocap_res[sum_emissions_nocap_res$diff_MtCO2 > 0, ]
+df_list_nocap <- list()
+df_idx_nocap <- 1
+for(row_idx in 1:nrow(comb_info_df_nocap)) {
+  ref_key <- comb_info_df_nocap[row_idx, 1]
+  scen_key <- comb_info_df_nocap[row_idx, 2]
+  reg_key <- comb_info_df_nocap[row_idx, 3]
+  for (m_key in unique(sda_pathways_subs$m_flag)) {
+    subs_df_nocap <- sda_pathways_subs[(
+      (sda_pathways_subs$Reference_key == ref_key) &
+        (sda_pathways_subs$Scenario_key == scen_key) &
+        (sda_pathways_subs$Region == reg_key) &
+        (sda_pathways_subs$m_flag == m_key)), ]
+    subs_df_nocap <- subs_df_nocap[order(subs_df_nocap$year), ]
+    subs_df_nocap$cumulative_emissions <- cumsum(subs_df_nocap$abs_emissions)
+    df_list_nocap[[df_idx_nocap]] <- subs_df_nocap
+    df_idx_nocap <- df_idx_nocap + 1
+  }
+}
+
+cumulative_df_nocap <- do.call(rbind, df_list_nocap)
+cumulative_df_nocap <- subset(cumulative_df_nocap, m_flag != 1)
+
+p <- ggplot(cumulative_df_nocap, aes(x=year, y=cumulative_emissions / 1000000,
+                               group=`m parameter option`)) +
+  geom_line(aes(linetype=`m parameter option`)) +
+  facet_grid(Scenario_key~Region, scales='free') +
+  ylab("Cumulative emissions (MtCO2)") + xlab("") +
+  theme(axis.text.x = element_text(angle = 45), legend.position='bottom',
+        legend.title=element_blank())
+filename <- paste0(wd$figs, "cumulative_emissions_m_nocap.png")
+png(filename, width=8, height=5, units = 'in', res = 300)
+print(p)
+dev.off()
 
 # plot pathways for IPCC normative models, literature data vs SDA data
 # subset intensity pathways df to include only default m param pathways from SDA 
