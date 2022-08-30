@@ -113,15 +113,26 @@ sum_emissions_res <- reshape(sum_emissions_df, direction='wide',
                              idvar=c('Reference_key', 'Scenario_key', 'Region'),
                              timevar='m parameter option',
                              v.names='abs_emissions')
-sum_emissions_res$diff_MtCO2 <- (
-  sum_emissions_res$`abs_emissions.m = 1` -
-    sum_emissions_res$abs_emissions.default) / 1000000
-# write out for reshaping and formatting by hand
-write.csv(sum_emissions_res, file=paste0(
-  wd$processed_data, 'diff_SDA_cumulative_emissions_m_default_m=1_2020-2050.csv'),
-  row.names=FALSE)
+sum_emissions_res$perc_diff_m1 <- (
+  (sum_emissions_res$`abs_emissions.m = 1` - sum_emissions_res$abs_emissions.default ) /
+    sum_emissions_res$abs_emissions.default * 100)
+sum_emissions_res$perc_diff_nocap <- (
+  (sum_emissions_res$`abs_emissions.no cap` - sum_emissions_res$abs_emissions.default ) /
+    sum_emissions_res$abs_emissions.default * 100)
 
+p <- ggplot(sum_emissions_res, aes(x=perc_diff_m1)) +
+  geom_histogram() + xlab("Percent difference: m = 1 vs default m")
+filename <- paste0(wd$figs, "perc_diff_cumulative_emissions_m=1.png")
+png(filename, width=4, height=4, units = 'in', res = 300)
+print(p)
+dev.off()
 
+p <- ggplot(sum_emissions_res, aes(x=perc_diff_nocap)) +
+  geom_histogram() + xlab("Percent difference: m no cap vs default m")
+filename <- paste0(wd$figs, "perc_diff_cumulative_emissions_m_no_cap.png")
+png(filename, width=4, height=4, units = 'in', res = 300)
+print(p)
+dev.off()
 
 # display cumulative emissions for regions that show a difference
 comb_info_df <- sum_emissions_res[sum_emissions_res$diff > 0, ]
