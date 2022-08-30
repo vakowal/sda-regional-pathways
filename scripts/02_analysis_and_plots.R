@@ -49,6 +49,32 @@ for(region in unique(sda_pathways_subs$Region)) {
   dev.off()
 }
 
+m_facet_2 <- subset(sda_pathways_subs, 
+                   Region %in% c("North America", "Europe and Eurasia",
+                                 "Africa", "Southern Asia"))
+m_facet_2$Region <- str_replace_all(m_facet_2$Region, 
+                                    "Europe and Eurasia",
+                                    "Europe & Eurasia")
+m_facet_2$Region <- factor(m_facet_2$Region,
+                           levels=c('Europe & Eurasia', 'North America',
+                                    'Africa', 'Southern Asia'))
+m_facet_2$Scenario_key <- factor(m_facet_2$Scenario_key, 
+                               levels = c("IMAGE", "SDS", "RECC"))
+
+p <- ggplot(m_facet_2, aes(x=year, y=intensity_SDA, group=`m parameter option`)) +
+  geom_line(aes(linetype=`m parameter option`)) +
+  scale_linetype_manual(values=c("solid", "dashed", "dotted")) +
+  facet_grid(Region ~ Scenario_key, scales='free') +
+  labs(fill="m parameter option") +
+  xlab("") + theme(axis.text=element_text(angle=45), legend.position='bottom',
+                   legend.title=element_blank()) +
+  ylab("SDA Intensity (kg CO2 / m2)")
+print(p)
+filename <- paste0(wd$figs, "m_param_3_versions_selected_regions.png")
+png(filename, width=5, height=6.3, units='in', res=300)
+print(p)
+dev.off()
+
 # plot faceted grid showing subset of regions for m param testing
 m_facet <- subset(sda_pathways_subs, 
                      Region %in% c("Africa", "Middle East", 
@@ -78,18 +104,6 @@ print(p)
 dev.off()
 
 
-# make a table: difference between default m and m=1, in the year 2030
-m_2030_df <- sda_pathways_subs[sda_pathways_subs$year == 2030, ]
-m_2030_res <- reshape(m_2030_df, direction='wide',
-                      idvar=c('Reference_key', 'Scenario_key', 'Region',
-                              'Sector'), timevar='m parameter option',
-                      v.names='intensity_SDA', drop='m_flag')
-m_2030_res$m_diff <- (
-  m_2030_res$`intensity_SDA.m = 1` - m_2030_res$intensity_SDA.default)
-# write out for reshaping and formatting by hand
-write.csv(m_2030_res, file=paste0(
-  wd$processed_data, 'diff_SDA_intensity_m_default_m=1_2030.csv'),
-  row.names=FALSE)
 
 # calculate cumulative emissions difference between versions of m
 sum_emissions_df <- aggregate(
