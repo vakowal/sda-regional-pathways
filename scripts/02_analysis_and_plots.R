@@ -22,9 +22,8 @@ sda_pathways <- read.csv(
 # do not plot the m floor option
 sda_pathways_subs <- sda_pathways[sda_pathways$m_flag != 2, ]
 sda_pathways_subs[, 'm parameter option'] <- factor( 
-  sda_pathways_subs$m_flag, levels <- c(0, 1, 3), labels=c('default', 
-                                                           'm = 1',
-                                                           'no cap'))
+  sda_pathways_subs$m_flag, levels <- c(0, 1, 3), 
+  labels=c('default', 'm = 1', 'no cap'))
 
 # hack so that different references appear in one row
 sda_pathways_subs[
@@ -171,13 +170,7 @@ print(p)
 dev.off()
 
 # Repeat above analysis and plotting for m no cap vs default m
-sum_emissions_nocap <- aggregate(
-  abs_emissions~Reference_key + Scenario_key + Region + `m parameter option`,
-  data=sda_pathways_subs, FUN=sum)  # TODO potentially sum up other ranges
-sum_emissions_nocap_res <- reshape(sum_emissions_nocap, direction='wide',
-                             idvar=c('Reference_key', 'Scenario_key', 'Region'),
-                             timevar='m parameter option',
-                             v.names='abs_emissions')
+sum_emissions_nocap_res <- sum_emissions_res
 sum_emissions_nocap_res$diff_MtCO2 <- (
   sum_emissions_nocap_res$`abs_emissions.no cap` -
     sum_emissions_res$abs_emissions.default) / 1000000
@@ -216,6 +209,21 @@ filename <- paste0(wd$figs, "cumulative_emissions_m_nocap.png")
 png(filename, width=8, height=5, units = 'in', res = 300)
 print(p)
 dev.off()
+
+
+# Plot faceted column chart comparing cumulative emissions for different m options
+p <- ggplot(sum_emissions_df, aes(x = `m parameter option`,
+                                  y = abs_emissions / 1000000)) +
+  geom_col(aes(fill = `m parameter option`)) +
+  facet_grid(Scenario_key~Region, scales='free') +
+  ylab("Cumulative emissions (MtCO2)") + xlab("") +
+  theme(axis.text.x = element_blank(), legend.position='bottom',
+        legend.title=element_blank())
+filename <- paste0(wd$figs, "cumulative_emissions_all_m.png")
+png(filename, width=8, height=5, units = 'in', res = 300)
+print(p)
+dev.off()
+
 
 # plot pathways for IPCC normative models, literature data vs SDA data
 # subset intensity pathways df to include only default m param pathways from SDA 
