@@ -157,7 +157,7 @@ cumulative_df <- do.call(rbind, df_list)
 # Remove no cap m flag
 cumulative_df <- subset(cumulative_df, m_flag != 3)
 
-p <- ggplot(cumulative_df, aes(x=year, y=cumulative_emissions / 1000000,
+p <- ggplot(cumulative_df, aes(x=year, y=cumulative_emissions / KG_MT_CONV,
                                group=`m parameter option`)) +
   geom_line(aes(linetype=`m parameter option`)) +
   facet_grid(Scenario_key~Region, scales='free') +
@@ -173,7 +173,7 @@ dev.off()
 sum_emissions_nocap_res <- sum_emissions_res
 sum_emissions_nocap_res$diff_MtCO2 <- (
   sum_emissions_nocap_res$`abs_emissions.no cap` -
-    sum_emissions_res$abs_emissions.default) / 1000000
+    sum_emissions_res$abs_emissions.default) / KG_MT_CONV
 
 comb_info_df_nocap <- sum_emissions_nocap_res[sum_emissions_nocap_res$diff_MtCO2 > 0, ]
 df_list_nocap <- list()
@@ -198,7 +198,7 @@ for(row_idx in 1:nrow(comb_info_df_nocap)) {
 cumulative_df_nocap <- do.call(rbind, df_list_nocap)
 cumulative_df_nocap <- subset(cumulative_df_nocap, m_flag != 1)
 
-p <- ggplot(cumulative_df_nocap, aes(x=year, y=cumulative_emissions / 1000000,
+p <- ggplot(cumulative_df_nocap, aes(x=year, y=cumulative_emissions / KG_MT_CONV,
                                group=`m parameter option`)) +
   geom_line(aes(linetype=`m parameter option`)) +
   facet_grid(Scenario_key~Region, scales='free') +
@@ -213,7 +213,7 @@ dev.off()
 
 # Plot faceted column chart comparing cumulative emissions for different m options
 p <- ggplot(sum_emissions_df, aes(x = `m parameter option`,
-                                  y = abs_emissions / 1000000)) +
+                                  y = abs_emissions / KG_MT_CONV)) +
   geom_col(aes(fill = `m parameter option`)) +
   facet_grid(Scenario_key~Region, scales='free') +
   ylab("Cumulative emissions (MtCO2)") + xlab("") +
