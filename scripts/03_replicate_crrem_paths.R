@@ -60,27 +60,38 @@ for (region in region_list) {
 	intensity_df <- CalcIntensityPathway(
 	  region_activity, region_emissions_base, sector_activity,
 	  sector_emissions, m_flag=0)
-	colnames(intensity_df) <- c('Year', 'Intensity')
-	intensity_df$source <- 'SDA'
-	intensity_df$region <- region
-	df_list[[region]] <- intensity_df
+	abs_emissions_df <- CalcAbsolutePathway(
+	  region_activity, intensity_df$intensity_SDA)
+	sda_df <- merge(intensity_df, abs_emissions_df)
+	colnames(sda_df) <- c('Year', 'Intensity', 'Emissions')
+	sda_df$source <- 'SDA'
+	sda_df$region <- region
+	df_list[[region]] <- sda_df
 }
 crrem_calc_df <- do.call(rbind, df_list)
 
 # compare to intensity supplied by CRREM
 df_list <- list()
 for (region in region_list) {
-  crrem_intensity <- crrem_resi_int_df[, c(
-    'Year', paste0(region, '.RESI.CO2-INT'))]
-  colnames(crrem_intensity) <- c('Year', 'Intensity')
-  crrem_intensity$source <- 'CRREM'
-  crrem_intensity$region <- region
-  df_list[[region]] <- crrem_intensity
+  crrem_activity <- crrem_resi_act_df[
+    (!is.na(crrem_resi_act_df$Year)), paste0(region, '.RESI.FA'), drop=TRUE]
+  crrem_intensity <- crrem_resi_int_df[
+    (!is.na(crrem_resi_act_df$Year)), c(
+      'Year', paste0(region, '.RESI.CO2-INT'))]
+  crrem_emissions <- CalcAbsolutePathway(
+    crrem_activity, crrem_intensity[, paste0(region, '.RESI.CO2-INT')])
+  colnames(crrem_emissions) <- c('Year', 'Emissions')
+  crrem_df <- merge(crrem_intensity, crrem_emissions)
+  colnames(crrem_df) <- c('Year', 'Intensity', 'Emissions')
+  crrem_df$source <- 'CRREM'
+  crrem_df$region <- region
+  df_list[[region]] <- crrem_df
 }
 crrem_rep_df <- do.call(rbind, df_list)
 
 comb_df <- rbind(crrem_calc_df, crrem_rep_df)
 
+# plot the differences
 p <- ggplot(comb_df, aes(x=Year, y=Intensity, group=source)) +
   geom_line(aes(linetype=source)) + facet_wrap(~region, scales='free') +
   ylab("Intensity (kg CO2 / m2)") +
@@ -90,3 +101,14 @@ filename <- paste0(wd$figs, "crrem_intensity_vs_sda_intensity_09012022.png")
 png(filename, width=7.5, height=5, units='in', res=300)
 print(p)
 dev.off()
+
+# calculate absolute emissions and difference in cumulative emissions
+sum_emissions_df <- aggregate(Emissions~source + region, data=comb_df,
+                              FUN=sum)
+sum_res <- reshape(sum_emissions_df, direction='wide',
+                   idvar=c('region'), timevar=c('source'),
+                   v.names='Emissions')
+sum_res$perc_diff <- (sum_res$Emissions.CRREM - sum_res$Emissions.SDA) /
+  sum_res$Emissions.SDA * 100
+# add these percent diff numbers to the plot by hand
+
