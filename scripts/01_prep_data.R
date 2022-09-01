@@ -165,12 +165,12 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2_3.csv'))) {
       processed_emp_activity,
       (Reference_key == ref_key) & (Scenario_key == scen_key) &
         (Region == reg_key) & (Sector == sect_key) & (Year == BASE_YEAR),
-      select=Activity_millions_m2)[[1]] * 1000000
+      select=Activity_millions_m2)[[1]] * MILLION_CONV
     company_activity_target <- subset(
       processed_emp_activity,
       (Reference_key == ref_key) & (Scenario_key == scen_key) &
         (Region == reg_key) & (Sector == sect_key) & (Year == TARGET_YEAR),
-      select=Activity_millions_m2)[[1]] * 1000000
+      select=Activity_millions_m2)[[1]] * MILLION_CONV
     company_activity <- seq(
       company_activity_base, company_activity_target,
       length.out=(TARGET_YEAR-BASE_YEAR) + 1)
@@ -204,7 +204,7 @@ if (!file.exists(paste0(wd$processed_data,'SDA_pathways_m_0_1_2_3.csv'))) {
       processed_emp_emissions,
       (Reference_key == ref_key) & (Scenario_key == scen_key) &
         (Region == reg_key) & (Sector == sect_key) & (Year == BASE_YEAR),
-      select=Emissions_MtCO2)[[1]] * 1000000
+      select=Emissions_MtCO2)[[1]] * KG_MT_CONV
     
     # different ways of calculating m
     for(m_flag in c(0, 1, 2, 3)) {

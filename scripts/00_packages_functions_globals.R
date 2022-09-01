@@ -7,11 +7,17 @@
 # Load packages
 library(tidyverse)
 library(rstudioapi)
+library(readxl)
 
 # globals
 BASE_YEAR = 2020
 TARGET_YEAR = 2050
-INTENSITY_CONVERSION = 1000
+# conversion factor: kg per t CO2
+KG_T_CONV = 1000
+# conversion factor: kg per Mt CO2
+KG_MT_CONV = 1000000
+# conversion factor: square feet per million square feet
+MILLION_CONV = 1000000
 
 script_dir <- dirname(getSourceEditorContext()$path)
 repo_dir <- dirname(script_dir)
@@ -28,7 +34,7 @@ repo_dir <- dirname(script_dir)
 #  - a data frame containing company_emissions in tCO2e and year
 CalcAbsolutePathway <- function(company_activity, company_intensity){
   company_emissions <- (
-    company_activity * (company_intensity / INTENSITY_CONVERSION))
+    company_activity * (company_intensity / KG_T_CONV))
   result_df <- data.frame(
     year=seq(BASE_YEAR, TARGET_YEAR, by=1),
     abs_emissions=company_emissions)
@@ -52,9 +58,9 @@ CalcAbsolutePathway <- function(company_activity, company_intensity){
 CalcIntensityPathway <- function(
     company_activity, company_emissions_base, 
     sector_activity, sector_emissions, m_flag){
-  sector_intensity <- (sector_emissions * 1000000) / sector_activity
+  sector_intensity <- (sector_emissions * KG_MT_CONV) / sector_activity
   SI_2050 <- sector_intensity[length(sector_intensity)]  # final item must describe 2050
-  CI_base <- (company_emissions_base * INTENSITY_CONVERSION) /
+  CI_base <- (company_emissions_base * KG_T_CONV) /
     company_activity[1]
   d_diff_param <- CI_base - SI_2050
   m_param <- if(m_flag == 1){
