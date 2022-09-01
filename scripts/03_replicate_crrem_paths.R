@@ -91,15 +91,6 @@ crrem_rep_df <- do.call(rbind, df_list)
 
 comb_df <- rbind(crrem_calc_df, crrem_rep_df)
 
-# calculate absolute emissions and difference in cumulative emissions
-sum_emissions_df <- aggregate(Emissions~source + region, data=comb_df,
-                              FUN=sum)
-sum_res <- reshape(sum_emissions_df, direction='wide',
-                   idvar=c('region'), timevar=c('source'),
-                   v.names='Emissions')
-sum_res$perc_diff <- (sum_res$Emissions.CRREM - sum_res$Emissions.SDA) /
-  sum_res$Emissions.SDA * 100
-
 # plot the differences
 p <- ggplot(comb_df, aes(x=Year, y=Intensity, group=source)) +
   geom_line(aes(linetype=source)) + facet_wrap(~region, scales='free') +
@@ -110,4 +101,14 @@ filename <- paste0(wd$figs, "crrem_intensity_vs_sda_intensity_09012022.png")
 png(filename, width=7.5, height=5, units='in', res=300)
 print(p)
 dev.off()
+
+# calculate absolute emissions and difference in cumulative emissions
+sum_emissions_df <- aggregate(Emissions~source + region, data=comb_df,
+                              FUN=sum)
+sum_res <- reshape(sum_emissions_df, direction='wide',
+                   idvar=c('region'), timevar=c('source'),
+                   v.names='Emissions')
+sum_res$perc_diff <- (sum_res$Emissions.CRREM - sum_res$Emissions.SDA) /
+  sum_res$Emissions.SDA * 100
+# add these percent diff numbers to the plot by hand
 
