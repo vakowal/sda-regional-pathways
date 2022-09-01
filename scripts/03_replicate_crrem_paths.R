@@ -60,7 +60,33 @@ for (region in region_list) {
 	intensity_df <- CalcIntensityPathway(
 	  region_activity, region_emissions_base, sector_activity,
 	  sector_emissions, m_flag=0)
+	colnames(intensity_df) <- c('Year', 'Intensity')
+	intensity_df$source <- 'SDA'
 	intensity_df$region <- region
 	df_list[[region]] <- intensity_df
 }
 crrem_calc_df <- do.call(rbind, df_list)
+
+# compare to intensity supplied by CRREM
+df_list <- list()
+for (region in region_list) {
+  crrem_intensity <- crrem_resi_int_df[, c(
+    'Year', paste0(region, '.RESI.CO2-INT'))]
+  colnames(crrem_intensity) <- c('Year', 'Intensity')
+  crrem_intensity$source <- 'CRREM'
+  crrem_intensity$region <- region
+  df_list[[region]] <- crrem_intensity
+}
+crrem_rep_df <- do.call(rbind, df_list)
+
+comb_df <- rbind(crrem_calc_df, crrem_rep_df)
+
+p <- ggplot(comb_df, aes(x=Year, y=Intensity, group=source)) +
+  geom_line(aes(linetype=source)) + facet_wrap(~region, scales='free') +
+  ylab("Intensity (kg CO2 / m2)") +
+  theme(axis.text.x=element_text(angle=45), axis.title.x=element_blank())
+print(p)
+filename <- paste0(wd$figs, "crrem_intensity_vs_sda_intensity_09012022.png")
+png(filename, width=7.5, height=5, units='in', res=300)
+print(p)
+dev.off()
