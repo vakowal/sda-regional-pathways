@@ -26,6 +26,8 @@ crrem_resi_act_df <- read_excel(
 processed_sector_data <- read.csv(
     paste0(wd$processed_data, 'processed_sector_data.csv'))
 
+crrem_de_df <- read.csv(paste0(wd$raw_data, 'CRREM_germany_intensity.csv'))
+
 df_list <- list()
 region_list <- c('AT', 'BU', 'EE', 'FI', 'DE', 'NL')
 for (region in region_list) {
@@ -76,7 +78,7 @@ for (region in region_list) {
   crrem_activity <- crrem_resi_act_df[
     (!is.na(crrem_resi_act_df$Year)), paste0(region, '.RESI.FA'), drop=TRUE]
   crrem_intensity <- crrem_resi_int_df[
-    (!is.na(crrem_resi_act_df$Year)), c(
+    (!is.na(crrem_resi_act_df$Year)), c( 
       'Year', paste0(region, '.RESI.CO2-INT'))]
   crrem_emissions <- CalcAbsolutePathway(
     crrem_activity, crrem_intensity[, paste0(region, '.RESI.CO2-INT')])
@@ -112,3 +114,14 @@ sum_res$perc_diff <- (sum_res$Emissions.CRREM - sum_res$Emissions.SDA) /
   sum_res$Emissions.SDA * 100
 # add these percent diff numbers to the plot by hand
 
+
+# Test comparison with CRREM data for Germany
+colnames(crrem_de_df)[1] <- "year"
+colnames(crrem_de_df)[2] <- "CRE_FA_m2"
+colnames(crrem_de_df)[4] <-  "intensity"
+crrem_de_df$source <- "CRREM"
+crrem_de_df <- mutate(crrem_de_df, total_FA_m2 = CRE_FA_m2 + Resi_FA_m2)
+crrem_de_df <- mutate(crrem_de_df, abs_emissions = intensity * total_FA_m2)
+
+de_activity <- crrem_de_df$total_FA_m2
+de_emissions_base <- crrem_de_df[1, "abs_emissions"]
