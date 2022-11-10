@@ -265,5 +265,6 @@ if (!file.exists(paste0(wd$processed_data, 'intensity_paths_all.csv'))) {
   print("Empirical intensity pathways already exist - no changes made")
 }
 
+
 # clean up environment
 rm(list=ls())

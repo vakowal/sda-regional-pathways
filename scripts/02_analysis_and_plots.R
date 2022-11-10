@@ -337,3 +337,9 @@ filename <- (paste0(wd$figs, "CRREM_vs_Ostermeyer_review.png"))
 png(filename, width = 7, height = 7, units = 'in', res = 300)
 print(p)
 dev.off()
+
+test_SDA_vs_CRREM <- filter(SDA_vs_CRREM, Country  == "Australia")
+
+p <- ggplot(test_SDA_vs_CRREM, aes(x = year, y = `Intensity_kgCO2/m2`,
+                                   group = Method))
+p + geom_line()
